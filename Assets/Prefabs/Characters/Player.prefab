@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 2328816501330762926}
   - component: {fileID: 1653524058227593170}
   - component: {fileID: 4910564961814401495}
+  - component: {fileID: 7853016994193160339}
   m_Layer: 6
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -1078,6 +1079,23 @@ MonoBehaviour:
   _predictionDot: {fileID: 5798934496495015096, guid: ea24661405f56714eb463d35df9d9913, type: 3}
   _numberOfDots: 20
   _spaceBetweenDots: 0.05
+--- !u!114 &7853016994193160339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474007025058361552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e9269c5abcbb04081af1f2d34e5011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 1
+  upgradeType: 15
+  cooldown: 0
+  _timeEchoPrefab: {fileID: 523212492809758793, guid: af07f12e774bd3740969e8ae82ecf713, type: 3}
+  _timeEchoDuration: 15
 --- !u!1 &8306389575047528816
 GameObject:
   m_ObjectHideFlags: 0

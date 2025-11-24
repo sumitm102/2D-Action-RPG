@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyBattleState : EnemyState {
 
     private Transform _playerTransform;
+    private Transform _lastTargetTransform;
     private float _lastTimeInBattle;
 
     public EnemyBattleState(StateMachine sm, int abn, Enemy e) : base(sm, abn, e) {
@@ -26,8 +27,10 @@ public class EnemyBattleState : EnemyState {
     public override void UpdateState() {
         base.UpdateState();
 
-        if (enemy.PlayerDetected())
+        if (enemy.PlayerDetected()) {
+            UpdateTargetIfNeeded();
             _lastTimeInBattle = Time.time;
+        }
 
         // Enemy is going to stay to battle mode for a certain duration even after the player stops getting detected
         // This makes sure that after the duration has been passed it goes back to idle
@@ -44,6 +47,18 @@ public class EnemyBattleState : EnemyState {
 
     public override void ExitState() {
         base.ExitState();
+    }
+
+    private void UpdateTargetIfNeeded() {
+        if (!enemy.PlayerDetected())
+            return;
+
+        Transform newTargetTransform = enemy.PlayerDetected().transform;
+
+        if (newTargetTransform != _lastTargetTransform) {
+            _lastTargetTransform = newTargetTransform;
+            _playerTransform = newTargetTransform;
+        }
     }
 
     private float DistanceToPlayer() {

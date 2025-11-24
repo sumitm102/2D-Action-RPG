@@ -123,7 +123,9 @@ public class Player : Entity {
 
         InputSet.Player.ToggleSkillTreeUI.performed += ctx => UI.ToggleSkillTreeUI();
 
+        // These two share one input since only one can be unlocked and used
         InputSet.Player.Spell.performed += ctx => SkillManager.ShardSkill.TryUseSkill();
+        InputSet.Player.Spell.performed += ctx => SkillManager.TimeEchoSkill.TryUseSkill();
     }
 
     private void OnDisable() {
