@@ -13,7 +13,7 @@ public enum E_SkillUpgradeType
     // Shard Tree
     Shard, // The shard explodes when touched by an enemy or when time goes up  
     Shard_MoveToEnemy, // Shard will move towards nearest enemy
-    Shard_Multicast, // Shard ability can have up to N charges. You can cast them all in a row.
+    Shard_Multicast, // Shard ability can have up to N charges. You can cast them all in a row
     Shard_Teleport, // You can swap places with the last shard you created
     Shard_TeleportHPRewind, // When you swap places with shard, your HP% is the same as it was when you created shard
 
@@ -21,6 +21,15 @@ public enum E_SkillUpgradeType
     SwordThrow, // You can throw sword to damage enemies from range
     SwordThrowSpin, // Sword will spin at one point and damage enemies like a chainsaw
     SwordThrowPierce, // Sword will pierce a certain amount of targets
-    SwordThrowBounce // Sword will bounce between enemies
+    SwordThrowBounce, // Sword will bounce between enemies 
+    
+    // Time Echo
+    TimeEcho, // Create a clone of a player. It can take damage from enemies
+    TimeEcho_SingleAttack, // Time Echo can perform a single attack
+    TimeEcho_MultiAttack, // Time Echo can perform multiple attacks
+    TimeEcho_ChanceToMultiply, // Time Echo has a chance to create another time echo when attacking
+    TimeEcho_HealWisp, // When time echo dies it creates a wisp that flies towards the player to heal
+    TimeEcho_CleanseWisp, // Wisp will now remove negative effects from player
+    TimeEcho_CooldownWisp // Wisp will now reduce cooldown of all skills by a few secondss
 
 }

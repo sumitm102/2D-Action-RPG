@@ -226,6 +226,5 @@ MonoBehaviour:
     m_Bits: 128
   targetCheck: {fileID: 4914546062676485644}
   checkRadius: 1
-  _bouceSpeed: 12
-  _targetDetectionRadius: 10
+  _bounceRadius: 10
   _minDamageDistance: 0.75
