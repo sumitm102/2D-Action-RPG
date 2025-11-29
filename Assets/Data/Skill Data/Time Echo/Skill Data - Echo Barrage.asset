@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1f7a715018874844a6b1006977e0c60, type: 3}
-  m_Name: Skill Data - Time Echo
+  m_Name: Skill Data - Echo Barrage
   m_EditorClassIdentifier: 
-  skillName: Time Echo
-  description: 'Creates a time echo of yourself.
-
-    The echo will distract enemies.'
-  skillIcon: {fileID: 1597580001, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
-  cost: 1
+  skillName: Echo Barrage
+  description: The time echo can perform 3 attacks.
+  skillIcon: {fileID: -1297123429, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
+  cost: 2
   isUnlockedByDefault: 0
   skillType: 1
   upgradeData:
-    upgradeType: 15
+    upgradeType: 17
     cooldown: 0
     damageScaleData:
       physical: 1

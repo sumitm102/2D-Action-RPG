@@ -23,6 +23,7 @@ public class VFXAutoController : MonoBehaviour
     [Header("Fade effect")]
     [SerializeField] private bool _canFade;
     [SerializeField] private float _fadeSpeed = 1f;
+    [SerializeField] private Color _originalColor = Color.white;
 
 
     private SpriteRenderer _sr;
@@ -45,7 +46,7 @@ public class VFXAutoController : MonoBehaviour
     }
 
     private IEnumerator FadeCo() {
-        Color targetColor = Color.white;
+        Color targetColor = _originalColor;
 
         while(targetColor.a > 0) {
             targetColor.a -= (_fadeSpeed * Time.deltaTime);
@@ -73,5 +74,9 @@ public class VFXAutoController : MonoBehaviour
 
         float zRotation = Random.Range(_minRotation, _maxRotation);
         transform.Rotate(0, 0, zRotation);
+    }
+    
+    public void setOriginalColor(Color color) {
+        _originalColor = color;
     }
 }

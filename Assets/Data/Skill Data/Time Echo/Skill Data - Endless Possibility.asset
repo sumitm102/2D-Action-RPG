@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1f7a715018874844a6b1006977e0c60, type: 3}
-  m_Name: Skill Data - Time Echo
+  m_Name: Skill Data - Endless Possibility
   m_EditorClassIdentifier: 
-  skillName: Time Echo
-  description: 'Creates a time echo of yourself.
-
-    The echo will distract enemies.'
-  skillIcon: {fileID: 1597580001, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
-  cost: 1
+  skillName: Endless Possibility
+  description: The time echo has a 30% chance to duplicate itself.
+  skillIcon: {fileID: -1154273805, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
+  cost: 2
   isUnlockedByDefault: 0
   skillType: 1
   upgradeData:
-    upgradeType: 15
+    upgradeType: 18
     cooldown: 0
     damageScaleData:
       physical: 1

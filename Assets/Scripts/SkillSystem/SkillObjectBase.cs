@@ -15,6 +15,7 @@ public class SkillObjectBase : MonoBehaviour
     protected DamageScaleData damageScaleData;
     protected E_ElementType usedElement;
     protected bool targetTookDamage;
+    protected Transform lastTarget;
 
     protected virtual void Awake() {
         anim = GetComponentInChildren<Animator>();
@@ -40,8 +41,10 @@ public class SkillObjectBase : MonoBehaviour
                 if (elementType != E_ElementType.None)
                     target.GetComponent<EntityStatusHandler>()?.ApplyStatusEffect(elementType, elementalEffectData);
 
-                if (targetTookDamage)
-                    entityVFX.CreateOnHitVFX(target.transform, isCritDamage, elementType);
+                if (targetTookDamage) {
+                    lastTarget = target.transform;
+                    entityVFX?.CreateOnHitVFX(target.transform, isCritDamage, elementType);
+                }
 
                 
             }
