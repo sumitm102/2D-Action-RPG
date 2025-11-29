@@ -7,6 +7,7 @@ public class PlayerVFX : EntityVFX
     [Range(0.01f, 0.2f)]
     [SerializeField] private float _imageEchoInterval = 0.05f;
     [SerializeField] private GameObject _imageEchoPrefab;
+    [SerializeField] private Color _imageEchoColor;
     [SerializeField] private bool _imageEchoEnabled = true;
 
     private Coroutine _imageEchoCo;
@@ -37,6 +38,14 @@ public class PlayerVFX : EntityVFX
     private void CreateImageEcho() {
         GameObject imageEcho = Instantiate(_imageEchoPrefab, transform.position, transform.rotation);
 
-        imageEcho.GetComponentInChildren<SpriteRenderer>().sprite = sr.sprite;
+        VFXAutoController vFXAutoController = imageEcho.GetComponent<VFXAutoController>();
+        SpriteRenderer spriteRenderer = imageEcho.GetComponentInChildren<SpriteRenderer>();
+
+        if(spriteRenderer != null) 
+            spriteRenderer.sprite = sr.sprite;
+        
+        if(vFXAutoController != null)
+            vFXAutoController.setOriginalColor(_imageEchoColor);
+        
     }
 }

@@ -872,6 +872,7 @@ MonoBehaviour:
   _electrifyVFXColor: {r: 1, g: 0.9215687, b: 0.015686275, a: 1}
   _imageEchoInterval: 0.09
   _imageEchoPrefab: {fileID: 8616711344792091448, guid: 914a4b04a0099134c882433212009be4, type: 3}
+  _imageEchoColor: {r: 0, g: 1, b: 0.9647059, a: 1}
   _imageEchoEnabled: 1
 --- !u!114 &519533497720172548
 MonoBehaviour:
@@ -1096,6 +1097,8 @@ MonoBehaviour:
   cooldown: 0
   _timeEchoPrefab: {fileID: 523212492809758793, guid: af07f12e774bd3740969e8ae82ecf713, type: 3}
   _timeEchoDuration: 15
+  _maxAttacks: 3
+  _duplicateChance: 0.3
 --- !u!1 &8306389575047528816
 GameObject:
   m_ObjectHideFlags: 0

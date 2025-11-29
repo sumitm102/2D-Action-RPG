@@ -117,7 +117,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  targetCheck: {fileID: 4139745871298003684}
+  targetCheck: {fileID: 538159073430254261}
   checkRadius: 1
   _onDeathVFX: {fileID: 8832007895716663925, guid: e33ddd3a599796a4295b39c9b560dc14, type: 3}
   _groundLayer:
@@ -143,7 +143,7 @@ MonoBehaviour:
   _heavyKnockbackDuration: 0.5
   _heavyDamageThreshold: 0.3
   _regenInterval: 1
-  _canRegenerateHealth: 1
+  _canRegenerateHealth: 0
 --- !u!1 &3673195533256908204
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 2470352363787210514}
   - component: {fileID: 1196045842230259150}
   - component: {fileID: 2935550835114056756}
+  - component: {fileID: 5325296075666674910}
   m_Layer: 6
   m_Name: Animator
   m_TagString: Untagged
@@ -285,3 +286,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5325296075666674910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8008203784236316139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f66e0a5d09d2c4a86599bcc3b0d1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

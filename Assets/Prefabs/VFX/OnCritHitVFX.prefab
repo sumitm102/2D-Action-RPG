@@ -255,3 +255,4 @@ MonoBehaviour:
   _maxRotation: 10
   _canFade: 0
   _fadeSpeed: 1
+  _originalColor: {r: 0, g: 0, b: 0, a: 0}
