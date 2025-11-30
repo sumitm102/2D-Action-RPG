@@ -8,6 +8,10 @@ public class SkillTimeEcho : SkillBase {
     [SerializeField] private int _maxAttacks = 3;
     [SerializeField] private float _duplicateChance = 0.3f;
 
+    [Header("Heal upgrades")]
+    [SerializeField] private float _damagePercentHealed = 0.3f;
+    [SerializeField] private float _cooldownReducedInSeconds;
+
     public void CreateTimeEcho(Vector3? targetPosition = null) {
         Vector3 position = targetPosition ?? transform.position;
 
@@ -16,6 +20,12 @@ public class SkillTimeEcho : SkillBase {
         if (timeEcho.TryGetComponent<SkillObjectTimeEcho>(out var skillObjectTimeEcho))
             skillObjectTimeEcho.SetupTimeEcho(this);
 
+    }
+
+    public bool ShouldBeWisp() {
+        return upgradeType == E_SkillUpgradeType.TimeEcho_HealWisp
+            || upgradeType == E_SkillUpgradeType.TimeEcho_CleanseWisp
+            || upgradeType == E_SkillUpgradeType.TimeEcho_CooldownWisp;
     }
 
     public float GetDuplicateChance() {
@@ -37,9 +47,15 @@ public class SkillTimeEcho : SkillBase {
             
     }
 
-    public float GetEchoDuration() {
-        return _timeEchoDuration;
-    }
+    public float GetPercentOfDamageHealed() => !ShouldBeWisp() ? 0 : _damagePercentHealed;
+
+    public float GetCooldownReduceInSeconds() => 
+        upgradeType != E_SkillUpgradeType.TimeEcho_CooldownWisp ? 0 : _cooldownReducedInSeconds;
+
+    public bool CanRemoveNegativeEffects() => upgradeType == E_SkillUpgradeType.TimeEcho_CleanseWisp;
+
+
+    public float GetEchoDuration() => _timeEchoDuration;
 
     public override void TryUseSkill() {
         if (!CanUseSkill())

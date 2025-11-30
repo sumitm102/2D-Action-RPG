@@ -24,6 +24,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
     [Header("Health Regen")]
     [SerializeField] private float _regenInterval = 1f;
     [SerializeField] private bool _canRegenerateHealth = true;
+    public float LastDamageTaken { get; private set; }
 
     #region UI variables
 
@@ -78,6 +79,9 @@ public class EntityHealth : MonoBehaviour, IDamagable
 
         TakeKnockback(damageDealer, physicalDamageTaken);
         ReduceHealth(physicalDamageTaken + elementalDamageTaken);
+
+        // Used for healing wisp calculation
+        LastDamageTaken = physicalDamageTaken + elementalDamageTaken;
 
         return true;
     }

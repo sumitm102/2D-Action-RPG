@@ -1093,12 +1093,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 1
-  upgradeType: 15
+  upgradeType: 19
   cooldown: 0
   _timeEchoPrefab: {fileID: 523212492809758793, guid: af07f12e774bd3740969e8ae82ecf713, type: 3}
   _timeEchoDuration: 15
   _maxAttacks: 3
   _duplicateChance: 0.3
+  _damagePercentHealed: 0.3
+  _cooldownReducedInSeconds: 1
 --- !u!1 &8306389575047528816
 GameObject:
   m_ObjectHideFlags: 0

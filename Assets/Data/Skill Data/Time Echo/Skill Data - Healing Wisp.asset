@@ -20,7 +20,7 @@ MonoBehaviour:
   isUnlockedByDefault: 0
   skillType: 1
   upgradeData:
-    upgradeType: 0
+    upgradeType: 19
     cooldown: 0
     damageScaleData:
       physical: 1
