@@ -107,6 +107,15 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UltimateSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""d81389b9-fd22-4fbd-91f3-8580a5ca8069"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30cb07ee-0dfb-43dc-8d4d-5e76c1d3603b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard & Mouse"",
+                    ""action"": ""UltimateSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -286,6 +306,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_Player_Spell = m_Player.FindAction("Spell", throwIfNotFound: true);
         m_Player_AimSword = m_Player.FindAction("AimSword", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+        m_Player_UltimateSpell = m_Player.FindAction("UltimateSpell", throwIfNotFound: true);
     }
 
     ~@PlayerInputSet()
@@ -361,6 +382,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Spell;
     private readonly InputAction m_Player_AimSword;
     private readonly InputAction m_Player_Mouse;
+    private readonly InputAction m_Player_UltimateSpell;
     public struct PlayerActions
     {
         private @PlayerInputSet m_Wrapper;
@@ -374,6 +396,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         public InputAction @Spell => m_Wrapper.m_Player_Spell;
         public InputAction @AimSword => m_Wrapper.m_Player_AimSword;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+        public InputAction @UltimateSpell => m_Wrapper.m_Player_UltimateSpell;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -410,6 +433,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
+            @UltimateSpell.started += instance.OnUltimateSpell;
+            @UltimateSpell.performed += instance.OnUltimateSpell;
+            @UltimateSpell.canceled += instance.OnUltimateSpell;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -441,6 +467,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
+            @UltimateSpell.started -= instance.OnUltimateSpell;
+            @UltimateSpell.performed -= instance.OnUltimateSpell;
+            @UltimateSpell.canceled -= instance.OnUltimateSpell;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -478,5 +507,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         void OnSpell(InputAction.CallbackContext context);
         void OnAimSword(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
+        void OnUltimateSpell(InputAction.CallbackContext context);
     }
 }
