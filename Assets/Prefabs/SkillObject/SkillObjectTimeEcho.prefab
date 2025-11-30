@@ -124,6 +124,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _wispMoveSpeed: 15
 --- !u!114 &1187949710723652632
 MonoBehaviour:
   m_ObjectHideFlags: 0

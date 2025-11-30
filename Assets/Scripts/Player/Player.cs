@@ -25,6 +25,10 @@ public class Player : Entity {
     [field: SerializeField] public float ComboResetTime { get; private set; } = 1f;
     private Coroutine _queuedAttackCo;
 
+    [field: Header("Ultimate ability details")]
+    [field: SerializeField] public float RiseSpeed { get; private set; } = 25f;
+    [field: SerializeField] public float RiseMaxDistance { get; private set; } = 3f;
+
 
     #region States
 
@@ -40,6 +44,7 @@ public class Player : Entity {
     public PlayerDeadState DeadState { get; private set; }
     public PlayerCounterAttackState CounterAttackState { get; private set; }
     public PlayerSwordThrowState SwordThrowState { get; private set; }
+    public PlayerDomainExpansionState DomainExpansionState { get; private set; }
 
     #endregion
 
@@ -106,6 +111,7 @@ public class Player : Entity {
         DeadState = new PlayerDeadState(StateMachine, _deadHash, this);
         CounterAttackState = new PlayerCounterAttackState(StateMachine, _counterAttackHash, this);
         SwordThrowState = new PlayerSwordThrowState(StateMachine, _swordThrowHash, this);
+        DomainExpansionState = new PlayerDomainExpansionState(StateMachine, _jumpFallHash, this);
 
         #endregion
 

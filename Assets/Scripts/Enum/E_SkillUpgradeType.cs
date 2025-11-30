@@ -30,6 +30,11 @@ public enum E_SkillUpgradeType
     TimeEcho_ChanceToDuplicate, // Time Echo has a chance to create another time echo when attacking
     TimeEcho_HealWisp, // When time echo dies it creates a wisp that flies towards the player to heal
     TimeEcho_CleanseWisp, // Wisp will now remove negative effects from player
-    TimeEcho_CooldownWisp // Wisp will now reduce cooldown of all skills by a few secondss
+    TimeEcho_CooldownWisp, // Wisp will now reduce cooldown of all skills by a few secondss
+
+    // Domain Expansion
+    Domain_SlowDown, // Create an area in which you slow down enemies by 90% - 100%. Player can move and fight freely
+    Domain_EchoSpam, // Player can no longer move, but can spam enemies with time echo ability
+    Domain_ShardSpam // Player can no longer move, but can spam enemies with shard ability
 
 }

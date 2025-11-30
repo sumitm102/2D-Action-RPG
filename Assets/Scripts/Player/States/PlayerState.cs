@@ -5,6 +5,8 @@ public abstract class PlayerState : EntityState {
     protected PlayerInputSet inputSet;
     protected PlayerSkillManager skillManager;
 
+    protected bool canDash = true;
+
 
     private static readonly int _yVelocityHash = Animator.StringToHash("yVelocity");
 
@@ -32,8 +34,18 @@ public abstract class PlayerState : EntityState {
 
         if (inputSet.Player.Dash.WasPressedThisFrame() && CanDash()) {
 
-            skillManager.DashSkill.SetSkillOnCooldown();
             stateMachine.ChangeState(player.DashState);
+            skillManager.DashSkill.SetSkillOnCooldown();
+        }
+
+        if (inputSet.Player.UltimateSpell.WasPressedThisFrame() && skillManager.DomainExpansionSkill.CanUseSkill()) {
+
+            if(skillManager.DomainExpansionSkill.InstantDomain())
+                skillManager.DomainExpansionSkill.CreateDomain();
+            else
+                stateMachine.ChangeState(player.DomainExpansionState);
+
+            skillManager.DomainExpansionSkill.SetSkillOnCooldown();
         }
     }
 
@@ -44,7 +56,10 @@ public abstract class PlayerState : EntityState {
     }
 
     private bool CanDash() {
-        if (player.WallDetected || stateMachine.CurrentState == player.DashState || !skillManager.DashSkill.CanUseSkill())
+        if (!canDash
+            || player.WallDetected 
+            || stateMachine.CurrentState == player.DashState 
+            || !skillManager.DashSkill.CanUseSkill())
             return false;
 
         return true;

@@ -736,6 +736,8 @@ MonoBehaviour:
   <JumpAttackVelocity>k__BackingField: {x: 8, y: -6}
   <AttackVelocityDuration>k__BackingField: 0.1
   <ComboResetTime>k__BackingField: 1
+  <RiseSpeed>k__BackingField: 25
+  <RiseMaxDistance>k__BackingField: 3
 --- !u!50 &4006880819638601890
 Rigidbody2D:
   serializedVersion: 5
@@ -988,6 +990,7 @@ GameObject:
   - component: {fileID: 1653524058227593170}
   - component: {fileID: 4910564961814401495}
   - component: {fileID: 7853016994193160339}
+  - component: {fileID: 7321824520824140615}
   m_Layer: 6
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -1023,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  upgradeType: 0
+  upgradeType: 1
   cooldown: 0
 --- !u!114 &1653524058227593170
 MonoBehaviour:
@@ -1101,6 +1104,21 @@ MonoBehaviour:
   _duplicateChance: 0.3
   _damagePercentHealed: 0.3
   _cooldownReducedInSeconds: 1
+--- !u!114 &7321824520824140615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474007025058361552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb974a3b5f62d404cb0533fda6485662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 4
+  upgradeType: 23
+  cooldown: 0
 --- !u!1 &8306389575047528816
 GameObject:
   m_ObjectHideFlags: 0
