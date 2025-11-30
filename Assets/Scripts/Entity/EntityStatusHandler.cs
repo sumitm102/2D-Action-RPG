@@ -7,7 +7,7 @@ public class EntityStatusHandler : MonoBehaviour
     private EntityVFX _entityVFX;
     private EntityStats _entityStats;
     private EntityHealth _entityHealth;
-    private E_ElementType _currentEffect = E_ElementType.None;
+    private E_ElementType _currentEffectType = E_ElementType.None;
 
     [Header("Electrify effect details")]
     [SerializeField] private GameObject _lightningStrikeVFX;
@@ -48,12 +48,12 @@ public class EntityStatusHandler : MonoBehaviour
     private IEnumerator ChillEffectCo(float duration, float slowMultiplier) {
 
         _entity.SlowDownEntity(duration, slowMultiplier);
-        _currentEffect = E_ElementType.Ice;
-        _entityVFX.PlayOnStatusVFX(duration, _currentEffect);
+        _currentEffectType = E_ElementType.Ice;
+        _entityVFX.PlayOnStatusVFX(duration, _currentEffectType);
 
         yield return new WaitForSeconds(duration);
 
-        _currentEffect = E_ElementType.None;
+        _currentEffectType = E_ElementType.None;
     }
 
     #endregion
@@ -68,8 +68,8 @@ public class EntityStatusHandler : MonoBehaviour
     }
 
     private IEnumerator BurnEffectCo(float duration, float totalDamage) {
-        _currentEffect = E_ElementType.Fire;
-        _entityVFX.PlayOnStatusVFX(duration, _currentEffect);
+        _currentEffectType = E_ElementType.Fire;
+        _entityVFX.PlayOnStatusVFX(duration, _currentEffectType);
 
         int ticksPerSecond = 2;
         int tickCount = Mathf.RoundToInt(ticksPerSecond * duration);
@@ -83,7 +83,7 @@ public class EntityStatusHandler : MonoBehaviour
             yield return new WaitForSeconds(tickInterval);
         }
 
-        _currentEffect = E_ElementType.None;
+        _currentEffectType = E_ElementType.None;
     }
 
     #endregion
@@ -111,15 +111,15 @@ public class EntityStatusHandler : MonoBehaviour
     }
 
     private IEnumerator ElectrifyEffectCo(float duration) {
-        _currentEffect = E_ElementType.Lightning;
-        _entityVFX.PlayOnStatusVFX(duration, _currentEffect);
+        _currentEffectType = E_ElementType.Lightning;
+        _entityVFX.PlayOnStatusVFX(duration, _currentEffectType);
 
         yield return new WaitForSeconds(duration);
         StopElectrifyEffect();
     }
 
     private void StopElectrifyEffect() {
-        _currentEffect = E_ElementType.None;
+        _currentEffectType = E_ElementType.None;
         _currentCharge = 0;
         _entityVFX.StopAllVFX();
     }
@@ -129,9 +129,15 @@ public class EntityStatusHandler : MonoBehaviour
     public bool CanStatusEffectBeApplied(E_ElementType elementType) {
 
         // This is so that lightning can be applied one after another for build up
-        if(elementType == E_ElementType.Lightning && _currentEffect == E_ElementType.Lightning) 
+        if(elementType == E_ElementType.Lightning && _currentEffectType == E_ElementType.Lightning) 
             return true;
 
-        return _currentEffect == E_ElementType.None;
+        return _currentEffectType == E_ElementType.None;
+    }
+
+    public void RemoveAllNegativeEffects() {
+        StopAllCoroutines();
+        _currentEffectType = E_ElementType.None;
+        _entityVFX.StopAllVFX();
     }
 }
