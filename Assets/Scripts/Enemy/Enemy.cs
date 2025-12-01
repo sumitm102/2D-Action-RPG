@@ -33,6 +33,8 @@ public class Enemy : Entity
 
     private Coroutine _handlePlayerDeathCo;
 
+    public float ActiveSlowMultiplier { get; private set; } = 1f;
+
 
     #region States
 
@@ -109,21 +111,21 @@ public class Enemy : Entity
     public void EnableCounterWindow(bool enable) => CanBeStunned = enable;
 
     protected override IEnumerator SlowDownEntityCo(float duration, float slowMultiplier) {
-
-        float originalMoveSpeed = MoveSpeed;
-        float originalBattleMoveSpeed = BattleMoveSpeed;
-        float originalAnimSpeed = Anim.speed;
-
-        float speedMultiplier = 1f - slowMultiplier;
-        MoveSpeed *= speedMultiplier;
-        BattleMoveSpeed *= speedMultiplier;
-        Anim.speed *= speedMultiplier;
+    
+        ActiveSlowMultiplier = 1f - slowMultiplier;
+        Anim.speed *= ActiveSlowMultiplier;
 
         yield return new WaitForSeconds(duration);
 
-        MoveSpeed = originalMoveSpeed;
-        BattleMoveSpeed = originalBattleMoveSpeed;
-        Anim.speed = originalAnimSpeed;
+        StopSlowDownEntity();
+
+    }
+
+    public override void StopSlowDownEntity() {
+        ActiveSlowMultiplier = 1f;
+        Anim.speed = 1f;
+
+        base.StopSlowDownEntity();
     }
 
 
@@ -134,6 +136,9 @@ public class Enemy : Entity
     private void OnDisable() {
             Player.onPlayerDeath -= HandlePlayerDeath;
     }
+
+    public float GetMoveSpeed() => MoveSpeed * ActiveSlowMultiplier;
+    public float GetBattleMoveSpeed() => BattleMoveSpeed * ActiveSlowMultiplier;
 
     protected override void OnDrawGizmos() {
         base.OnDrawGizmos();
