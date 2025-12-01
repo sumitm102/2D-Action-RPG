@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 0
   upgradeType: 1
-  cooldown: 0
+  cooldown: 3
 --- !u!114 &1653524058227593170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,8 +1117,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 4
-  upgradeType: 23
+  upgradeType: 22
   cooldown: 0
+  _domainPrefab: {fileID: 5281343909437708519, guid: aa7d222782250eb439d629619ee3fcfb, type: 3}
+  _targetSlowdownPercent: 0.8
+  _slowdownDomainDuration: 5
+  _spellCastingDomainSlowdown: 1
+  _spellCastingDomainDuration: 8
+  maxDomainSize: 10
+  expandSpeed: 3
 --- !u!1 &8306389575047528816
 GameObject:
   m_ObjectHideFlags: 0

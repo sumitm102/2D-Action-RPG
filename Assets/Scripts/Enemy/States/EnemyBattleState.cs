@@ -19,7 +19,8 @@ public class EnemyBattleState : EnemyState {
 
         // This makes sure enemy backs up if the player character is too close
         if (ShouldRetreat()) {
-            rb.linearVelocity = new Vector2(enemy.RetreatVelocity.x * -1f * DirectionToPlayer(), enemy.RetreatVelocity.y); // Not using set velocity method since it'll flip the character when negative velocity is applied
+            rb.linearVelocity = new Vector2(enemy.RetreatVelocity.x * enemy.ActiveSlowMultiplier
+                * -1f * DirectionToPlayer(), enemy.RetreatVelocity.y); // Not using set velocity method since it'll flip the character when negative velocity is applied
             enemy.HandleFlip(DirectionToPlayer());
         }
     }
@@ -42,7 +43,7 @@ public class EnemyBattleState : EnemyState {
         if (WithinAttackRange() && enemy.PlayerDetected())
             stateMachine.ChangeState(enemy.AttackState);
         else
-            enemy.SetVelocity(enemy.BattleMoveSpeed * DirectionToPlayer(), rb.linearVelocityY); 
+            enemy.SetVelocity(enemy.GetBattleMoveSpeed() * DirectionToPlayer(), rb.linearVelocityY); 
     }
 
     public override void ExitState() {

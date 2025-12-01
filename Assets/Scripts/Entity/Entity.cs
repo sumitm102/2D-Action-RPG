@@ -122,15 +122,23 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void SlowDownEntity(float duration, float slowMultiplier) {
-        if(_slowDownCoroutine != null)
-            StopCoroutine(_slowDownCoroutine);
+    public virtual void SlowDownEntity(float duration, float slowMultiplier, bool canOverrideSlowEffect = false) {
+        if(_slowDownCoroutine != null) {
+            if (canOverrideSlowEffect)
+                StopCoroutine(_slowDownCoroutine);
+            else
+                return;
+        }
 
         _slowDownCoroutine = StartCoroutine(SlowDownEntityCo(duration, slowMultiplier));
     }
 
     protected virtual IEnumerator SlowDownEntityCo(float duration, float slowMultiplier) {
         yield return null;
+    }
+
+    public virtual void StopSlowDownEntity() {
+        _slowDownCoroutine = null;
     }
 
     protected virtual void OnDrawGizmos() {
