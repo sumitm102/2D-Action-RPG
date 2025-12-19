@@ -19,8 +19,8 @@ public class SkillObjectShard : SkillObjectBase
         transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
     }
 
-    public void MoveTowardsClosestTarget(float speed) {
-        _target = FindClosestTarget();
+    public void MoveTowardsClosestTarget(float speed, Transform newTarget = null) {
+        _target = newTarget == null ? FindClosestTarget(): newTarget;
         _speed = speed;
     }
 
@@ -35,7 +35,7 @@ public class SkillObjectShard : SkillObjectBase
         Invoke(nameof(Explode), duration);
     }
 
-    public void SetupShard(SkillShard skillShard, float duration, bool canMove, float shardSpeed) {
+    public void SetupShard(SkillShard skillShard, float duration, bool canMove, float shardSpeed, Transform target = null) {
         _skillShard = skillShard;
 
         playerStats = skillShard.Player.Stats;
@@ -45,7 +45,7 @@ public class SkillObjectShard : SkillObjectBase
         Invoke(nameof(Explode), duration);
 
         if (canMove)
-            MoveTowardsClosestTarget(shardSpeed);
+            MoveTowardsClosestTarget(shardSpeed, target);
         
     }
 
