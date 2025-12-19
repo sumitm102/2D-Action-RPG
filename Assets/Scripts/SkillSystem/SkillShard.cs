@@ -47,13 +47,16 @@ public class SkillShard : SkillBase
             _currentShard.OnExplode += ForceCooldown;
     }
 
-    public void CreateRawShard() {
-        bool canMove = IsUpgradeUnlocked(E_SkillUpgradeType.Shard_MoveToEnemy) || IsUpgradeUnlocked(E_SkillUpgradeType.Shard_Multicast);
+    public void CreateRawShard(Transform target = null, bool shardCanMove = false) {
+        bool canMove = !shardCanMove ? 
+            IsUpgradeUnlocked(E_SkillUpgradeType.Shard_MoveToEnemy) 
+            || IsUpgradeUnlocked(E_SkillUpgradeType.Shard_Multicast):
+            shardCanMove;
 
         GameObject shardObject = Instantiate(_shardPrefab, transform.position, Quaternion.identity);
 
         if(shardObject.TryGetComponent<SkillObjectShard>(out var skillObjectShard))
-            skillObjectShard.SetupShard(this, _shardDefaultDuration, canMove, _shardSpeed);
+            skillObjectShard.SetupShard(this, _shardDefaultDuration, canMove, _shardSpeed, target);
         
 
     }

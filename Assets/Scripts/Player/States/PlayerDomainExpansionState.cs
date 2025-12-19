@@ -32,16 +32,21 @@ public class PlayerDomainExpansionState : PlayerState {
 
         if (_isLevitating) {
 
-            if(stateTimer < 0f)
+            skillManager.DomainExpansionSkill.PerformSpellCasting();
+
+            if(stateTimer < 0f) {
+
+                _isLevitating = false;
+                rb.gravityScale = _originalGravityScale;
+
                 stateMachine.ChangeState(player.IdleState);
+            }
         }
     }
 
     public override void ExitState() {
         base.ExitState();
 
-        rb.gravityScale = _originalGravityScale;
-        _isLevitating = false;
         _createdDomain = false;
         canDash = true;
     }
@@ -51,7 +56,7 @@ public class PlayerDomainExpansionState : PlayerState {
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
 
-        stateTimer = 2f;
+        stateTimer = skillManager.DomainExpansionSkill.GetDomainDuration();
 
         if (!_createdDomain) {
             _createdDomain = true;
