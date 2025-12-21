@@ -13,6 +13,9 @@ public class EnemyHealth : EntityHealth
     }
 
     public override bool TakeDamage(float damage, float elementalDamage, E_ElementType elementType, Transform damageDealer) {
+        if (!canTakeDamage)
+            return false;
+
         bool tookDamage = base.TakeDamage(damage, elementalDamage, elementType, damageDealer);
 
         if (!tookDamage)

@@ -29,7 +29,12 @@ public class Enemy : Entity
     [field:SerializeField] public LayerMask PlayerDetectionLayer { get; private set;}
     [field: SerializeField] public float PlayerCheckDistance { get; private set; } = 10f;
 
+
+    #region Components
     public Transform PlayerTransform { get; private set; }
+    public EnemyHealth EnemyHealth { get; private set; }
+
+    #endregion
 
     private Coroutine _handlePlayerDeathCo;
 
@@ -47,6 +52,11 @@ public class Enemy : Entity
 
     #endregion
 
+    protected override void Awake() {
+        base.Awake();
+
+        EnemyHealth = GetComponent<EnemyHealth>();
+    }
 
     protected override void Start() {
         base.Start();

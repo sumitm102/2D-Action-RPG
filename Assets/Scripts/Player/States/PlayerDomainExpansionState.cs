@@ -16,6 +16,8 @@ public class PlayerDomainExpansionState : PlayerState {
     public override void EnterState() {
         base.EnterState();
 
+        player.Health.SetCanTakeDamage(false);
+
         _originalPosition = player.transform.position;
         _originalGravityScale = rb.gravityScale;
         _finalRiseDistance = GetAvailableRiseDistance();
@@ -46,6 +48,8 @@ public class PlayerDomainExpansionState : PlayerState {
 
     public override void ExitState() {
         base.ExitState();
+
+        player.Health.SetCanTakeDamage(true);
 
         _createdDomain = false;
         canDash = true;

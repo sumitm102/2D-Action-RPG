@@ -25,6 +25,6 @@ public class SkillDash : SkillBase
     }
 
     private void CreateClone() {
-        Debug.Log("Created clone");
+        PlayerSkillManager.TimeEchoSkill.CreateTimeEcho();
     }
 }

@@ -11,6 +11,8 @@ public class PlayerDashState : PlayerState {
     public override void EnterState() {
         base.EnterState();
 
+        player.Health.SetCanTakeDamage(false);
+
         // Applies different skills based on its upgrade
         skillManager.DashSkill.OnStartEffect();
 
@@ -40,6 +42,8 @@ public class PlayerDashState : PlayerState {
 
     public override void ExitState() {
         base.ExitState();
+
+        player.Health.SetCanTakeDamage(true);
 
         // Applies different skills based on its upgrade
         skillManager.DashSkill.OnEndEffect();
