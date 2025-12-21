@@ -10,7 +10,6 @@ public class EntityHealth : MonoBehaviour, IDamagable
     private EntityStats _entityStats;
 
     [SerializeField] protected float currentHealth;
-    [SerializeField] protected bool isDead;
 
     [Header("On Damage Knockback")]
     [SerializeField] private Vector2 _onDamageKnockback = new Vector2(1.5f, 2.5f);
@@ -25,6 +24,8 @@ public class EntityHealth : MonoBehaviour, IDamagable
     [SerializeField] private float _regenInterval = 1f;
     [SerializeField] private bool _canRegenerateHealth = true;
     public float LastDamageTaken { get; private set; }
+    [field: SerializeField] public bool IsDead { get; private set; }
+    protected bool canTakeDamage = true;
 
     #region UI variables
 
@@ -57,7 +58,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
     }
 
     public virtual bool TakeDamage(float physicalDamage, float elementalDamage, E_ElementType elementType, Transform damageDealer) {
-        if (isDead)
+        if (IsDead || !canTakeDamage)
             return false;
 
         if (AttackEvaded()) {
@@ -85,6 +86,8 @@ public class EntityHealth : MonoBehaviour, IDamagable
 
         return true;
     }
+
+    public void SetCanTakeDamage(bool canTakeDamge) => canTakeDamage = canTakeDamge;
 
     private void TakeKnockback(Transform damageDealer, float finalPhysicalDamage) {
         Vector2 knockbackVelocity = CalculateKnockbackVelocity(finalPhysicalDamage, damageDealer);
@@ -137,7 +140,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
     }
     public void IncreaseHealth(float regenAmount) {
 
-        if (isDead)
+        if (IsDead)
             return;
 
         float newHealth = currentHealth + regenAmount;
@@ -154,7 +157,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
     #endregion
 
     protected virtual void Die() {
-        isDead = true;
+        IsDead = true;
         _entity?.TryEnterDeadState();
     }
 

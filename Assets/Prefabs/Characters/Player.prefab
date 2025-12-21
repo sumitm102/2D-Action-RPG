@@ -843,7 +843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  isDead: 0
   _onDamageKnockback: {x: 1.5, y: 2.5}
   _knockbackDuration: 0.2
   _onHeavyDamageKnockback: {x: 7, y: 7}
@@ -851,6 +850,7 @@ MonoBehaviour:
   _heavyDamageThreshold: 0.3
   _regenInterval: 1
   _canRegenerateHealth: 1
+  <IsDead>k__BackingField: 0
 --- !u!114 &9196903123795792986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 3
-  upgradeType: 14
+  upgradeType: 0
   cooldown: 0
   _swordPrefab: {fileID: 4358831644093846120, guid: a0c01d51f6796054083fe1f7796bf8be, type: 3}
   _regularThrowForce: 2.75
@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 1
-  upgradeType: 16
+  upgradeType: 0
   cooldown: 0
   _timeEchoPrefab: {fileID: 523212492809758793, guid: af07f12e774bd3740969e8ae82ecf713, type: 3}
   _timeEchoDuration: 15
@@ -1117,14 +1117,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 4
-  upgradeType: 23
+  upgradeType: 0
   cooldown: 0
   _domainPrefab: {fileID: 5281343909437708519, guid: aa7d222782250eb439d629619ee3fcfb, type: 3}
   _targetSlowdownPercent: 0.8
   _slowdownDomainDuration: 5
-  _spellsToCast: 10
-  _spellCastingDomainSlowdown: 1
-  _spellCastingDomainDuration: 8
+  _shardsToCast: 10
+  _shardCastSlowdownPercent: 1
+  _shardCastDomainDuration: 8
+  _echosToCast: 8
+  _echoCastSlowdownPercent: 1
+  _echoCastDomainDuration: 6
   maxDomainSize: 10
   expandSpeed: 3
 --- !u!1 &8306389575047528816

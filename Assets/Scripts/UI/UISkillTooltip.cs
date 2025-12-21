@@ -11,6 +11,7 @@ public class UISkillTooltip : UITooltip
 
     [SerializeField] private TextMeshProUGUI _skillName;
     [SerializeField] private TextMeshProUGUI _skillDescription;
+    [SerializeField] private TextMeshProUGUI _skillCooldown;
     [SerializeField] private TextMeshProUGUI _skillRequirements;
     [Space]
     [SerializeField] private string _metRequirementHex;
@@ -41,6 +42,7 @@ public class UISkillTooltip : UITooltip
 
         _skillName.text = treeNode.skillData.skillName;
         _skillDescription.text = treeNode.skillData.description;
+        _skillCooldown.text = "Cooldown: " + treeNode.skillData.upgradeData.cooldown + "s";
 
         string skillLockedText = GetColoredText(_importantInfoHex, this._skillLockedText);
         string requirementsText = treeNode.isLocked ? skillLockedText : GetRequirements(treeNode.skillData.cost, treeNode.neededNodes, treeNode.conflictingNodes);
