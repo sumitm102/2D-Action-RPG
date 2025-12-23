@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Leather
   itemIcon: {fileID: 1267531870, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
   itemType: 0
+  maxStackSize: 2
