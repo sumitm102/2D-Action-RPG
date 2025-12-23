@@ -6,4 +6,5 @@ public class SO_ItemData : ScriptableObject
     public string itemName;
     public Sprite itemIcon;
     public E_ItemType itemType;
+    public int maxStackSize = 1;
 }
