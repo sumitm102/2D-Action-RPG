@@ -1426,6 +1426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 1488881862}
   _itemStackSize: {fileID: 759271760}
 --- !u!1 &217287215
@@ -11784,6 +11787,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 1299613146}
   _itemStackSize: {fileID: 1356763250}
 --- !u!1 &530283005
@@ -11836,6 +11842,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 588945077}
   _itemStackSize: {fileID: 1398034714}
 --- !u!1 &534624554
@@ -15061,10 +15070,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1131905260}
-  - {fileID: 54435548}
   - {fileID: 1740184685}
   - {fileID: 1441287085}
   - {fileID: 436013503}
+  - {fileID: 54435548}
   m_Father: {fileID: 1222955763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -15198,6 +15207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 901040583}
   _itemStackSize: {fileID: 1575125178}
 --- !u!1 &881390022
@@ -16061,6 +16073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 374423590}
   _itemStackSize: {fileID: 926641262}
 --- !u!1 &984237842
@@ -17400,6 +17415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 1586602031}
   _itemStackSize: {fileID: 841347595}
 --- !u!1 &1124158139
@@ -18037,7 +18055,7 @@ GameObject:
   - component: {fileID: 1182542297}
   - component: {fileID: 1182542296}
   m_Layer: 10
-  m_Name: ObjectItemPickup_Leather
+  m_Name: ObjectItemPickup_Wooden Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18133,7 +18151,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1267531870, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
+  m_Sprite: {fileID: 1953109853, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -18156,7 +18174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2392f568aa478419d489af3d23bc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemData: {fileID: 11400000, guid: 3e1201808b7aa7143896b726787f9ac4, type: 2}
+  _itemData: {fileID: 11400000, guid: 06c45e314b47e3c49a9bc3e263fe45e4, type: 2}
 --- !u!4 &1182542299
 Transform:
   m_ObjectHideFlags: 0
@@ -18904,6 +18922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 642099273}
   _itemStackSize: {fileID: 123626507}
 --- !u!1 &1270355585
@@ -20393,6 +20414,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 1479635336}
   _itemStackSize: {fileID: 742073894}
 --- !u!1 &1398034712
@@ -21589,10 +21613,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1175894345}
-  - {fileID: 722002937}
   - {fileID: 1070730461}
   - {fileID: 538870600}
   - {fileID: 1314976116}
+  - {fileID: 722002937}
   m_Father: {fileID: 1222955763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -24570,6 +24594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 341991376}
   _itemStackSize: {fileID: 807077039}
 --- !u!1 &1833971798
@@ -26535,12 +26562,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 685146521}
+  - {fileID: 1249732849}
+  - {fileID: 174554017}
   - {fileID: 534624557}
   - {fileID: 818154895}
   - {fileID: 619102354}
   - {fileID: 347959026}
-  - {fileID: 1249732849}
-  - {fileID: 174554017}
   m_Father: {fileID: 1222955763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -27440,6 +27467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391964b3117dc6b448cce6105b80b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ItemInSlot>k__BackingField:
+    itemData: {fileID: 0}
+    currentStackSize: 0
   _itemIcon: {fileID: 503193093}
   _itemStackSize: {fileID: 1112309445}
 --- !u!1 &2126358106
