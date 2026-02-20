@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class Inventory_Item
 {
+    private string _itemId;
     public SO_ItemData itemData;
     public int currentStackSize = 1;
 
@@ -12,6 +13,7 @@ public class Inventory_Item
     public Inventory_Item(SO_ItemData itemData) {
         this.itemData = itemData;
         Modifiers = EquipmentData()?.modifiers;
+        _itemId = itemData.itemName + " - " + Guid.NewGuid().ToString();
     }
 
     private SO_EquipmentData EquipmentData() {
@@ -24,14 +26,14 @@ public class Inventory_Item
     public void AddModifiers(EntityStats playerStats) {
         foreach(var modifier in Modifiers) {
             Stat statToModify = playerStats?.GetStatByType(modifier.statType);
-            statToModify.AddModifier(modifier.value, itemData.itemName);
+            statToModify.AddModifier(modifier.value, _itemId);
         }
     }
 
     public void RemoveModifiers(EntityStats playerStats) {
         foreach (var modifier in Modifiers) {
             Stat statToModify = playerStats?.GetStatByType(modifier.statType);
-            statToModify.RemoveModifier(itemData.itemName);
+            statToModify.RemoveModifier(_itemId);
         }
     }
 

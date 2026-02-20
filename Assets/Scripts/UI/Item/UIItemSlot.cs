@@ -7,14 +7,14 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler
 {
     [field: SerializeField]
     public Inventory_Item ItemInSlot { get; private set; }
-    private Inventory_Player _inventory;
+    protected Inventory_Player inventory;
 
     [Header("UI item slot step")]
     [SerializeField] private Image _itemIcon;
     [SerializeField] private TextMeshProUGUI _itemStackSize;
 
-    private void Awake() {
-        _inventory = FindAnyObjectByType<Inventory_Player>();
+    protected void Awake() {
+        inventory = FindAnyObjectByType<Inventory_Player>();
     }
 
     public void UpdateSlot(Inventory_Item item) {
@@ -36,10 +36,10 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler
         _itemStackSize.text = ItemInSlot.currentStackSize > 1 ? ItemInSlot.currentStackSize.ToString() : "";
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
+    public virtual void OnPointerDown(PointerEventData eventData) {
         if (ItemInSlot == null)
             return;
 
-        _inventory.TryEquipItem(ItemInSlot);
+        inventory.TryEquipItem(ItemInSlot);
     }
 }
