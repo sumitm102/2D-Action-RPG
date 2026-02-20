@@ -997,11 +997,15 @@ MonoBehaviour:
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
-  - slotType: 0
+  - slotType: 2
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
-  - slotType: 0
+  - slotType: 3
+    equippedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - slotType: 3
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
