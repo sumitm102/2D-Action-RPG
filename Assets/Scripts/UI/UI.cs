@@ -3,11 +3,14 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     public UISkillTooltip skillTooltip;
+    public UIItemTooltip itemTooltip;
+
     public UISkillTree skillTree;
     private bool _isSkillTreeEnabled;
 
     private void Awake() {
         skillTooltip = GetComponentInChildren<UISkillTooltip>();
+        itemTooltip = GetComponentInChildren<UIItemTooltip>();
         skillTree = GetComponentInChildren<UISkillTree>(true); // Able to get the component even when the game object is not active
     }
 

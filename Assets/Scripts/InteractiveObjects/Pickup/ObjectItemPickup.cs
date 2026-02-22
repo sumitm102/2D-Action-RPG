@@ -24,8 +24,12 @@ public class ObjectItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         _inventory = collision. GetComponent<Inventory_Base>();
+        if (_inventory == null)
+            return;
 
-        if (_inventory != null & _inventory.CanAddItem()) {
+        bool canAddItem = _inventory.CanAddItem() || _inventory.CanAddToStack(_itemToAdd);
+
+        if (canAddItem) {
             _inventory.AddItem(_itemToAdd);
             Destroy(this.gameObject);
         }
