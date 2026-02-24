@@ -20,5 +20,6 @@ public enum E_StatType
    Evasion,
    FireResistance,
    IceResistance,
-   LightningResistance
+   LightningResistance,
+   ElementalDamage
 }

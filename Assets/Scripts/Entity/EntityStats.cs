@@ -30,32 +30,33 @@ public class EntityStats : MonoBehaviour
         return finalEvasion;
     }
 
+    public float GetBaseDamage() =>
+        // Each strength point gives +1 to physical damage
+        offenseStats.damage.GetValue() + majorStats.strength.GetValue(); 
+    public float GetCritChance() =>
+        // Each agility point gives 0.3% bonus to crit chance
+        offenseStats.critChance.GetValue() + majorStats.agility.GetValue() * 0.3f;
+    public float GetCritPower() =>
+        // Each strength point gives 0.5% bonus to crit power
+        offenseStats.critPower.GetValue() + (majorStats.strength.GetValue() * 0.5f);
+
+
     public float GetPhysicalDamage(out bool isCritDamage, float scaleFactor = 1f) {
-        float baseDamage = offenseStats.damage.GetValue();
-        float bonusDamage = majorStats.strength.GetValue(); // Each strength point gives +1 to physical damage
-        float totalBaseDamage = baseDamage + bonusDamage;
-
-        float baseCritChance = offenseStats.critChance.GetValue();
-        float bonusCritChance = majorStats.agility.GetValue() * 0.3f; // Each agility point gives 0.3% bonus to crit chance
-        float totalCritChance = baseCritChance + bonusCritChance;
-
-        float baseCritPower = offenseStats.critPower.GetValue();
-        float bonusCritPower = majorStats.strength.GetValue() * 0.5f; // Each strength point gives 0.5% bonus to crit power
-        float totalCritPower = (baseCritPower + bonusCritPower) / 100; // Total crit power as a multiplier to the total base damage
+        float baseDamage = GetBaseDamage();
+        float totalCritChance = GetCritChance();
+        float totalCritPower = GetCritPower() / 100; // Total crit power as a multiplier to the total base damage
 
         isCritDamage = Random.Range(0, 100f) < totalCritChance;
-        float finalDamage = isCritDamage ?  totalBaseDamage * totalCritPower : totalBaseDamage;
+        float finalDamage = isCritDamage ?  baseDamage * totalCritPower : baseDamage;
 
         return finalDamage * scaleFactor;
     }
 
     public float GetArmorMitigation(float armorReduction) {
-        float baseArmor = defenceStats.armor.GetValue();
-        float bonusArmor = majorStats.vitality.GetValue(); // Each vitality gives 1% bonus to armor
-        float totalArmor = baseArmor + bonusArmor;
+        float baseArmor = GetBaseArmor();
 
         float reductionMultiplier = Mathf.Clamp01(1 - armorReduction);
-        float effectiveArmor = totalArmor * reductionMultiplier;
+        float effectiveArmor = baseArmor * reductionMultiplier;
 
         float mitigation = effectiveArmor / (effectiveArmor + 100); // 100 is the scaling constant. Also, makes it easier to calculate mitigation
         float mitigationLimit = 0.85f; // Mitigation will be capped at this value
@@ -63,6 +64,10 @@ public class EntityStats : MonoBehaviour
 
         return finalMitigation;
     }
+
+    public float GetBaseArmor() =>
+        // Each vitality gives 1% bonus to armor
+        defenceStats.armor.GetValue() + majorStats.vitality.GetValue();
 
     public float GetArmorReduction() {
         float finalReduction = offenseStats.armorReduction.GetValue() / 100f;
