@@ -14,21 +14,21 @@ public class Inventory_Base : MonoBehaviour
     }
 
     public bool CanAddItem() => itemList.Count < maxInventorySize;
-    public bool CanAddToStack(Inventory_Item itemToAdd) {
+    public Inventory_Item FindStackable(Inventory_Item itemToAdd) {
         List<Inventory_Item> stackableItems = itemList.FindAll(item => item.itemData == itemToAdd.itemData);
 
         foreach(var  stackableItem in stackableItems)
             if(stackableItem.CanAddStack())
-                return true;
+                return stackableItem;
         
 
-        return false;
+        return null;
     }
 
     public void AddItem(Inventory_Item itemToAdd) {
 
-        Inventory_Item itemInInventory = FindItemInList(itemToAdd.itemData);
-        if(itemInInventory != null && itemInInventory.CanAddStack())
+        Inventory_Item itemInInventory = FindStackable(itemToAdd);
+        if(itemInInventory != null)
             itemInInventory.AddStack();
         else
             itemList.Add(itemToAdd);
