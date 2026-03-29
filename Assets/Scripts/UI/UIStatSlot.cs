@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UIStatSlot : MonoBehaviour
+public class UIStatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private RectTransform _rect;
     private UI _ui;
-    private EntityStats _playerStats;
+    private PlayerStats _playerStats;
 
     [SerializeField] private E_StatType _statType;
     [SerializeField] private TextMeshProUGUI _statName;
@@ -19,7 +20,15 @@ public class UIStatSlot : MonoBehaviour
     private void Awake() {
         _ui = GetComponentInParent<UI>();
         _rect = GetComponent<RectTransform>();
-        _playerStats = FindFirstObjectByType<EntityStats>();
+        _playerStats = FindFirstObjectByType<PlayerStats>();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        _ui.statTooltip.ShowTooltip(true, _rect, _statType);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        _ui.statTooltip.ShowTooltip(false, null);
     }
 
 
@@ -151,4 +160,5 @@ public class UIStatSlot : MonoBehaviour
                 return false;
         }
     }
+
 }

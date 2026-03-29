@@ -666,10 +666,10 @@ GameObject:
   - component: {fileID: 243660480552183167}
   - component: {fileID: 3660344504111482020}
   - component: {fileID: 9196903123795792986}
-  - component: {fileID: 519533497720172548}
   - component: {fileID: 1349299021041077195}
   - component: {fileID: 8102399762747660400}
   - component: {fileID: 6302413839951439439}
+  - component: {fileID: 7110349619583400578}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -877,7 +877,7 @@ MonoBehaviour:
   _imageEchoPrefab: {fileID: 8616711344792091448, guid: 914a4b04a0099134c882433212009be4, type: 3}
   _imageEchoColor: {r: 0, g: 1, b: 0.9647059, a: 1}
   _imageEchoEnabled: 1
---- !u!114 &519533497720172548
+--- !u!114 &1349299021041077195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -886,7 +886,65 @@ MonoBehaviour:
   m_GameObject: {fileID: 6798972382744166182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440567c87d2660d47b226ab0bcb07c2a, type: 3}
+  m_Script: {fileID: 11500000, guid: c29c78b19182fd04ebc4a660137090c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightningStrikeVFX: {fileID: 8025110722390184153, guid: f0fe096bb7cc0ba49b859c8ee32e2b74, type: 3}
+  _currentCharge: 0
+  _maximumCharge: 1
+--- !u!114 &8102399762747660400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798972382744166182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aceef4c8939113e4fb56e7db508f4aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6302413839951439439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798972382744166182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc361c7d1015adf4ebd60cb738520336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxInventorySize: 10
+  itemList: []
+  equipList:
+  - slotType: 1
+    equippedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - slotType: 2
+    equippedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - slotType: 3
+    equippedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - slotType: 3
+    equippedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+--- !u!114 &7110349619583400578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798972382744166182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9573a10c0b474e8dc47b78bda881d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resourceStats:
@@ -951,64 +1009,6 @@ MonoBehaviour:
       _baseValue: 0
       _modifiers: []
   defaultStatSetup: {fileID: 11400000, guid: d82753a505261dc4eb3370c5a8217065, type: 2}
---- !u!114 &1349299021041077195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6798972382744166182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29c78b19182fd04ebc4a660137090c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lightningStrikeVFX: {fileID: 8025110722390184153, guid: f0fe096bb7cc0ba49b859c8ee32e2b74, type: 3}
-  _currentCharge: 0
-  _maximumCharge: 1
---- !u!114 &8102399762747660400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6798972382744166182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aceef4c8939113e4fb56e7db508f4aa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6302413839951439439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6798972382744166182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc361c7d1015adf4ebd60cb738520336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxInventorySize: 10
-  itemList: []
-  equipList:
-  - slotType: 1
-    equippedItem:
-      itemData: {fileID: 0}
-      currentStackSize: 0
-  - slotType: 2
-    equippedItem:
-      itemData: {fileID: 0}
-      currentStackSize: 0
-  - slotType: 3
-    equippedItem:
-      itemData: {fileID: 0}
-      currentStackSize: 0
-  - slotType: 3
-    equippedItem:
-      itemData: {fileID: 0}
-      currentStackSize: 0
 --- !u!1 &7474007025058361552
 GameObject:
   m_ObjectHideFlags: 0
