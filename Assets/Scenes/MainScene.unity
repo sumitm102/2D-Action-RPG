@@ -2048,6 +2048,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 1488881862}
   _itemStackSize: {fileID: 759271760}
 --- !u!1 &216750901
@@ -12822,7 +12823,7 @@ GameObject:
   - component: {fileID: 417115617}
   - component: {fileID: 417115616}
   m_Layer: 10
-  m_Name: ObjectItemPickup_Leather
+  m_Name: ObjectItemPickup_Book of Oblivion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12918,7 +12919,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1267531870, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
+  m_Sprite: {fileID: 1703433620, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12941,7 +12942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2392f568aa478419d489af3d23bc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemData: {fileID: 11400000, guid: 3e1201808b7aa7143896b726787f9ac4, type: 2}
+  _itemData: {fileID: 11400000, guid: dbfb37e3f9328054db25a2d1fb51cff2, type: 2}
 --- !u!4 &417115619
 Transform:
   m_ObjectHideFlags: 0
@@ -14564,6 +14565,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 1299613146}
   _itemStackSize: {fileID: 1356763250}
 --- !u!1 &517286073
@@ -14755,6 +14757,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 588945077}
   _itemStackSize: {fileID: 1398034714}
 --- !u!1 &534624554
@@ -17747,6 +17750,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 1587550883}
   _itemStackSize: {fileID: 1353874246}
   slotType: 2
@@ -20829,6 +20833,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 901040583}
   _itemStackSize: {fileID: 1575125178}
 --- !u!1 &881390022
@@ -22094,6 +22099,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 374423590}
   _itemStackSize: {fileID: 926641262}
 --- !u!1 &984237842
@@ -24176,6 +24182,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 1586602031}
   _itemStackSize: {fileID: 841347595}
 --- !u!1 &1124158139
@@ -25212,6 +25219,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 720312320}
   _itemStackSize: {fileID: 2090861479}
   slotType: 1
@@ -26061,7 +26069,7 @@ GameObject:
   - component: {fileID: 1246830490}
   - component: {fileID: 1246830489}
   m_Layer: 10
-  m_Name: ObjectItemPickup_Ring of Luck
+  m_Name: ObjectItemPickup_Small potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26157,7 +26165,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 297411600, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
+  m_Sprite: {fileID: 460529782, guid: 3e085576af1e4484da5338302a2c3e88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -26180,7 +26188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2392f568aa478419d489af3d23bc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemData: {fileID: 11400000, guid: 7b94ac3be97ef2f4992a169712545874, type: 2}
+  _itemData: {fileID: 11400000, guid: abf7c9e94c2a7004085d62575f30d94a, type: 2}
 --- !u!4 &1246830492
 Transform:
   m_ObjectHideFlags: 0
@@ -26556,6 +26564,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 642099273}
   _itemStackSize: {fileID: 123626507}
 --- !u!1 &1270355585
@@ -28804,6 +28813,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 1479635336}
   _itemStackSize: {fileID: 742073894}
 --- !u!1 &1398034712
@@ -30235,6 +30245,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 127058809}
   _itemStackSize: {fileID: 1153038593}
   slotType: 3
@@ -34951,6 +34962,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 341991376}
   _itemStackSize: {fileID: 807077039}
 --- !u!1 &1833971798
@@ -36336,6 +36348,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 1367677933}
   _itemStackSize: {fileID: 748963606}
   slotType: 3
@@ -39814,6 +39827,7 @@ MonoBehaviour:
   <ItemInSlot>k__BackingField:
     itemData: {fileID: 0}
     currentStackSize: 0
+    itemEffect: {fileID: 0}
   _itemIcon: {fileID: 503193093}
   _itemStackSize: {fileID: 1112309445}
 --- !u!1 &2126358106

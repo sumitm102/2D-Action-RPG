@@ -923,18 +923,22 @@ MonoBehaviour:
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
+      itemEffect: {fileID: 0}
   - slotType: 2
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
+      itemEffect: {fileID: 0}
   - slotType: 3
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
+      itemEffect: {fileID: 0}
   - slotType: 3
     equippedItem:
       itemData: {fileID: 0}
       currentStackSize: 0
+      itemEffect: {fileID: 0}
 --- !u!114 &7110349619583400578
 MonoBehaviour:
   m_ObjectHideFlags: 0

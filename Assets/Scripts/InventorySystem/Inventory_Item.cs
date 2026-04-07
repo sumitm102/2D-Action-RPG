@@ -9,10 +9,13 @@ public class Inventory_Item
     public int currentStackSize = 1;
 
     public ItemModifier[] Modifiers { get; private set; }
+    public SO_ItemEffectData itemEffect;
 
     public Inventory_Item(SO_ItemData itemData) {
         this.itemData = itemData;
         Modifiers = EquipmentData()?.modifiers;
+        itemEffect = itemData.itemEffect;
+
         _itemId = itemData.itemName + " - " + Guid.NewGuid().ToString();
     }
 
