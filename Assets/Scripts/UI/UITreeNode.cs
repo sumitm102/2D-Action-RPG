@@ -91,6 +91,9 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     public void RefundPoints() {
+        if (!isUnlocked || skillData.isUnlockedByDefault)
+            return;
+
         isUnlocked = false;
         isLocked = false;
 
