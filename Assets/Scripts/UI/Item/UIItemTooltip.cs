@@ -34,6 +34,12 @@ public class UIItemTooltip : UITooltip
             sb.AppendLine("+ " + modValue + " " + modType);
         }
 
+        if(item.itemEffect != null) {
+            sb.AppendLine("");
+            sb.AppendLine("Unique effect:");
+            sb.AppendLine(item.itemEffect.effectDescription);
+        }
+
         return sb.ToString();
     }
 

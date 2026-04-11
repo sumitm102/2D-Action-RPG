@@ -84,6 +84,7 @@ public class Player : Entity {
     public PlayerVFX VFX { get; private set; }
     public EntityHealth Health { get;private set; }
     public EntityStatusHandler StatusHandler { get; private set; }
+    public EntityCombat Combat { get; private set; }
 
     #endregion
 
@@ -96,6 +97,7 @@ public class Player : Entity {
         VFX = GetComponent<PlayerVFX>();
         Health = GetComponent<EntityHealth>();
         StatusHandler = GetComponent<EntityStatusHandler>();
+        Combat = GetComponent<PlayerCombat>();
 
         #region State Initialization
 
@@ -122,16 +124,27 @@ public class Player : Entity {
     private void OnEnable() {
         InputSet.Enable();
 
+        #region Movement Inputs
         InputSet.Player.Movement.performed += ctx => MoveInput = ctx.ReadValue<Vector2>();
         InputSet.Player.Movement.canceled += ctx => MoveInput = Vector2.zero;
+        #endregion
+
+
 
         InputSet.Player.Mouse.performed += ctx => MousePosition = ctx.ReadValue<Vector2>();
 
-        InputSet.Player.ToggleSkillTreeUI.performed += ctx => UI.ToggleSkillTreeUI();
 
+        #region Skill Inputs
         // These two share one input since only one can be unlocked and used
         InputSet.Player.Spell.performed += ctx => SkillManager.ShardSkill.TryUseSkill();
         InputSet.Player.Spell.performed += ctx => SkillManager.TimeEchoSkill.TryUseSkill();
+        #endregion
+
+
+        #region UI Inputs
+        InputSet.Player.ToggleSkillTreeUI.performed += ctx => UI.ToggleSkillTreeUI();
+        InputSet.Player.ToggleInventoryUI.performed += ctx => UI.ToggleInventoryUI();
+        #endregion
     }
 
     private void OnDisable() {

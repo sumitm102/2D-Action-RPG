@@ -48,4 +48,9 @@ public class PlayerVFX : EntityVFX
             vFXAutoController.setOriginalColor(_imageEchoColor);
         
     }
+
+    // Used when scriptable objects need to create vfx
+    public void CreateEffectOf(GameObject effectObject, Transform target) {
+        Instantiate(effectObject, target.position, Quaternion.identity);
+    }
 }

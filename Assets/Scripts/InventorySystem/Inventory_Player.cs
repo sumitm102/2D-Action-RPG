@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Inventory_Player : Inventory_Base
 {
-    private EntityStats _playerStats;
+    private Player _player;
     public List<Inventory_EquipmentSlot> equipList;
 
     protected override void Awake() {
         base.Awake();
 
-        _playerStats = GetComponent<EntityStats>();
+        _player = GetComponent<Player>();
     }
 
     public void TryEquipItem(Inventory_Item item) {
@@ -28,31 +28,49 @@ public class Inventory_Player : Inventory_Base
         var slotToReplace = matchingSlots[0];
         var itemToUnequip = slotToReplace.equippedItem;
 
+        UnequipItem(itemToUnequip, slotToReplace != null);
         EquipItem(inventoryItem, slotToReplace);
-        UnequipItem(itemToUnequip);
     }
 
     private void EquipItem(Inventory_Item itemToEquip, Inventory_EquipmentSlot slot) {
+        float savedHPPercent = _player.Health.GetHPPercent();
+
         slot.equippedItem = itemToEquip;
-        slot.equippedItem.AddModifiers(_playerStats);
+        slot.equippedItem.AddModifiers(_player.Stats);
+        slot.equippedItem.AddItemEffect(_player);
+
+        // This is to make sure hp bar stays the same even when max health changes
+        _player.Health.SetHPToPercent(savedHPPercent);
 
         RemoveItem(itemToEquip);
     }
 
-    public void UnequipItem(Inventory_Item itemToUnequip) {
-        if (!CanAddItem()) {
+    public void UnequipItem(Inventory_Item itemToUnequip, bool isReplacingItem = false) {
+        if (!CanAddItem() && !isReplacingItem) {
             Debug.Log("No space left");
             return;
         }
 
-        foreach (var slot in equipList) {
-            if(slot.equippedItem == itemToUnequip) {
-                slot.equippedItem = null;
-                break;
-            }
-        }
-        
-        itemToUnequip.RemoveModifiers(_playerStats);
+        float savedHPPercent = _player.Health.GetHPPercent();
+
+        var slotToUnequip = equipList.Find(slot => slot.equippedItem == itemToUnequip);
+        if (slotToUnequip != null)
+            slotToUnequip.equippedItem = null;
+
+        // Performs the same functionality as above
+        //foreach (var slot in equipList) {
+        //    if (slot.equippedItem == itemToUnequip) {
+        //        slot.equippedItem = null;
+        //        break;
+        //    }
+        //}
+
+        itemToUnequip.RemoveModifiers(_player.Stats);
+        itemToUnequip.RemoveItemEffect();
+
+        // This is to make sure hp bar stays the same even when max health changes
+        _player.Health.SetHPToPercent(savedHPPercent);
+
         AddItem(itemToUnequip);
 
 

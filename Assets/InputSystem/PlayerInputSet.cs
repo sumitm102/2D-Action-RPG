@@ -116,6 +116,15 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleInventoryUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""67f6392a-70e8-428c-b9ff-8fa66968970a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""action"": ""UltimateSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a868026-abcf-4470-8d8f-7f9f0dac8ebe"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard & Mouse"",
+                    ""action"": ""ToggleInventoryUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -307,6 +327,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_Player_AimSword = m_Player.FindAction("AimSword", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_UltimateSpell = m_Player.FindAction("UltimateSpell", throwIfNotFound: true);
+        m_Player_ToggleInventoryUI = m_Player.FindAction("ToggleInventoryUI", throwIfNotFound: true);
     }
 
     ~@PlayerInputSet()
@@ -383,6 +404,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AimSword;
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_UltimateSpell;
+    private readonly InputAction m_Player_ToggleInventoryUI;
     public struct PlayerActions
     {
         private @PlayerInputSet m_Wrapper;
@@ -397,6 +419,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         public InputAction @AimSword => m_Wrapper.m_Player_AimSword;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @UltimateSpell => m_Wrapper.m_Player_UltimateSpell;
+        public InputAction @ToggleInventoryUI => m_Wrapper.m_Player_ToggleInventoryUI;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -436,6 +459,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @UltimateSpell.started += instance.OnUltimateSpell;
             @UltimateSpell.performed += instance.OnUltimateSpell;
             @UltimateSpell.canceled += instance.OnUltimateSpell;
+            @ToggleInventoryUI.started += instance.OnToggleInventoryUI;
+            @ToggleInventoryUI.performed += instance.OnToggleInventoryUI;
+            @ToggleInventoryUI.canceled += instance.OnToggleInventoryUI;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -470,6 +496,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @UltimateSpell.started -= instance.OnUltimateSpell;
             @UltimateSpell.performed -= instance.OnUltimateSpell;
             @UltimateSpell.canceled -= instance.OnUltimateSpell;
+            @ToggleInventoryUI.started -= instance.OnToggleInventoryUI;
+            @ToggleInventoryUI.performed -= instance.OnToggleInventoryUI;
+            @ToggleInventoryUI.canceled -= instance.OnToggleInventoryUI;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -508,5 +537,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         void OnAimSword(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnUltimateSpell(InputAction.CallbackContext context);
+        void OnToggleInventoryUI(InputAction.CallbackContext context);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EntityCombat : MonoBehaviour
@@ -29,6 +30,9 @@ public class EntityCombat : MonoBehaviour
 
     public DamageScaleData basicAttackScale;
 
+    // The <float> here passes the damage amount as a parameter to its subscriber methods
+    public event Action<float> OnPerformingPhysicalDamage;
+
     private void Awake() {
         _entityVFX = GetComponent<EntityVFX>();
         _entityStats = GetComponent<EntityStats>();
@@ -54,8 +58,10 @@ public class EntityCombat : MonoBehaviour
                     target.GetComponent<EntityStatusHandler>()?.ApplyStatusEffect(elementType, elementalEffectData);
                 
 
-                if (targetTookDamage) 
+                if (targetTookDamage) {
+                    OnPerformingPhysicalDamage?.Invoke(physicalDamage);
                     _entityVFX.CreateOnHitVFX(target.transform, isCritDamage, elementType);
+                }
                 
             }
         }

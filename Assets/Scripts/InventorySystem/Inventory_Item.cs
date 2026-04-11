@@ -40,6 +40,12 @@ public class Inventory_Item
         }
     }
 
+    // Subscribes and unsubscribes to an event when damage is taken
+    // Also applies effects when event is invoke in the EntityHealth
+    public void AddItemEffect(Player player) => itemEffect?.SubscribeToEvent(player);
+    public void RemoveItemEffect() => itemEffect?.UnsubscribeToEvent();
+
+
     public bool CanAddStack() => currentStackSize < itemData.maxStackSize;
     public void AddStack() => currentStackSize++;
     public void RemoveStack() => currentStackSize--;

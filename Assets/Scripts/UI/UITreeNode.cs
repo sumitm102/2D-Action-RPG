@@ -116,13 +116,13 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (CanSkillBeUnlocked())
             Unlock();
         else if (isLocked)
-            _ui.skillTooltip.TextBlinkEffect();
+            _ui.SkillTooltip.TextBlinkEffect();
         else
             Debug.Log("Cannot be unlocked");
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        _ui.skillTooltip.ShowTooltip(true, _rect, this);
+        _ui.SkillTooltip.ShowTooltip(true, _rect, this);
 
         if (isUnlocked || isLocked)
             return;
@@ -132,7 +132,7 @@ public class UITreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        _ui.skillTooltip.ShowTooltip(false, _rect);
+        _ui.SkillTooltip.ShowTooltip(false, _rect);
 
         if (isUnlocked || isLocked)
             return;
