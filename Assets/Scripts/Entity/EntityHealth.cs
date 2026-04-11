@@ -33,6 +33,8 @@ public class EntityHealth : MonoBehaviour, IDamagable
 
     #endregion
 
+    public event Action OnDamageTaken;
+    
     protected virtual void Awake() {
 
         if (_entity == null)
@@ -83,6 +85,9 @@ public class EntityHealth : MonoBehaviour, IDamagable
 
         // Used for healing wisp calculation
         LastDamageTaken = physicalDamageTaken + elementalDamageTaken;
+
+        // Primarily used for implementing different item effects
+        OnDamageTaken?.Invoke();
 
         return true;
     }

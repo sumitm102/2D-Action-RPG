@@ -44,23 +44,29 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         if (ItemInSlot == null || ItemInSlot.itemData.itemType == E_ItemType.Material)
             return;
 
-        if (ItemInSlot.itemData.itemType == E_ItemType.Consumable)
+
+        if (ItemInSlot.itemData.itemType == E_ItemType.Consumable) {
+            if (!ItemInSlot.itemEffect.CanBeUsed())
+                return;
+
             inventory.TryUseItem(ItemInSlot);
+        }
         else
             inventory.TryEquipItem(ItemInSlot);
 
+
         if(ItemInSlot == null)
-            ui.itemTooltip.ShowTooltip(false, null);
+            ui.ItemTooltip.ShowTooltip(false, null);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
         if(ItemInSlot == null) 
             return;
 
-        ui.itemTooltip.ShowTooltip(true, rect, ItemInSlot);
+        ui.ItemTooltip.ShowTooltip(true, rect, ItemInSlot);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        ui.itemTooltip.ShowTooltip(false, null);
+        ui.ItemTooltip.ShowTooltip(false, null);
     }
 }

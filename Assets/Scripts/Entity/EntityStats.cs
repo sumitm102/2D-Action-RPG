@@ -9,6 +9,10 @@ public class EntityStats : MonoBehaviour
 
     public SO_StatSetup defaultStatSetup;
 
+    protected virtual void Awake() {
+        
+    }
+
     public float GetMaxHealth() {
         float baseMaxHealth = resourceStats.maxHealth.GetValue();
         float bonusMaxHealth = majorStats.vitality.GetValue() * 5f; // Each vitality point gives +5 to max health

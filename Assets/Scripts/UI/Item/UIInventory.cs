@@ -52,7 +52,8 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    private void OnDisable() {
+    // Not using on disable method here since it unsubsribes everytime player equips items when inventory ui is set off
+    private void OnDestroy() {
         _inventoryFromPlayer.OnInventoryChange -= UpdateUI;
     }
 }

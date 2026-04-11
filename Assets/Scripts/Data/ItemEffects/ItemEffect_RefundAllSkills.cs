@@ -6,7 +6,7 @@ public class ItemEffect_RefundAllSkills : SO_ItemEffectData
 {
     public override void ExecuteEffect() {
         UI ui = FindFirstObjectByType<UI>();
-        ui.skillTree.RefundAllSkills();
+        ui.SkillTreeUI.RefundAllSkills();
 
         #region Alternate way to perform the same functionality
         // Find game object with ui skill tree component even if it's inactive
