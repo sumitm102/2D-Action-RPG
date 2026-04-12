@@ -15,7 +15,7 @@ TagManager:
   - Enemy
   - Clone
   - Sword
-  - PlayerPickups
+  - PlayerInteractable
   - SkillObjectSword
   - 
   - 
