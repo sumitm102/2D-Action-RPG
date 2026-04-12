@@ -29,6 +29,9 @@ public class Player : Entity {
     [field: SerializeField] public float RiseSpeed { get; private set; } = 25f;
     [field: SerializeField] public float RiseMaxDistance { get; private set; } = 3f;
 
+    [field: Header("Interact details")]
+    [field: SerializeField] public float InteractRadius { get; private set; } = 1.5f;
+
 
     #region States
 
@@ -145,6 +148,8 @@ public class Player : Entity {
         InputSet.Player.ToggleSkillTreeUI.performed += ctx => UI.ToggleSkillTreeUI();
         InputSet.Player.ToggleInventoryUI.performed += ctx => UI.ToggleInventoryUI();
         #endregion
+
+        InputSet.Player.Interact.performed += ctx => TryInteract();
     }
 
     private void OnDisable() {
@@ -219,6 +224,26 @@ public class Player : Entity {
 
     public void TeleportPlayer(Vector3 position) {
         transform.position = position;
+    }
+
+    private void TryInteract() {
+        IInteractable closestInteracble = null;
+        float closestDistance = Mathf.Infinity;
+        Collider2D[] interactableObjects = Physics2D.OverlapCircleAll(transform.position, InteractRadius);
+
+        foreach(var interactableObject in interactableObjects) {
+            if(interactableObject.TryGetComponent<IInteractable>(out var interactable)) {
+                float distance = Vector2.Distance(transform.position, interactableObject.transform.position);
+
+                if(distance < closestDistance) {
+                    closestDistance = distance;
+                    closestInteracble = interactable;
+                }
+            }
+        }
+
+        if (closestInteracble != null)
+            closestInteracble.Interact();
     }
 
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 19e436d369a93434f96183406ae8106e
+guid: 23c088defc47f0c4b80ca23646dd25a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5457132565505971404
-    second: artdecoUI_PIPO_wb_0
+      213: 1440231860608163594
+    second: Blacksmith Corner_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: artdecoUI_PIPO_wb_0
+      name: Blacksmith Corner_0
       rect:
         serializedVersion: 2
-        x: 893
-        y: 0
-        width: 607
-        height: 301
+        x: 63
+        y: 147
+        width: 910
+        height: 650
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc4133bb721abbb40800000000000000
-      internalID: 5457132565505971404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: artdecoUI_PIPO_wb_1
-      rect:
-        serializedVersion: 2
-        x: 1073
-        y: 583
-        width: 48
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b09c8a9e2b49de84db4cfe31afa71e95
-      internalID: -1002899538
+      spriteID: a0fdfbd1f3bbcf310800000000000000
+      internalID: 1440231860608163594
       vertices: []
       indices: 
       edges: []
@@ -173,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f3b927e10afd31042836b67aed428455
+    spriteID: 55b821449e893f740a14f77770c2a148
     internalID: 0
     vertices: []
     indices: 
@@ -183,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      artdecoUI_PIPO_wb_0: 5457132565505971404
-      artdecoUI_PIPO_wb_1: -1002899538
+      Blacksmith Corner_0: 1440231860608163594
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

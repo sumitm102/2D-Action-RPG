@@ -739,6 +739,7 @@ MonoBehaviour:
   <ComboResetTime>k__BackingField: 1
   <RiseSpeed>k__BackingField: 25
   <RiseMaxDistance>k__BackingField: 3
+  <InteractRadius>k__BackingField: 0.8
 --- !u!50 &4006880819638601890
 Rigidbody2D:
   serializedVersion: 5
