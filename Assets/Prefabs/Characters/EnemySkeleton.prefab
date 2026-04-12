@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  isDead: 0
   _onDamageKnockback: {x: 1.5, y: 2.5}
   _knockbackDuration: 0.2
   _onHeavyDamageKnockback: {x: 7, y: 7}
@@ -272,6 +271,7 @@ MonoBehaviour:
   _heavyDamageThreshold: 0.3
   _regenInterval: 1
   _canRegenerateHealth: 1
+  <IsDead>k__BackingField: 0
 --- !u!114 &7716633974962583603
 MonoBehaviour:
   m_ObjectHideFlags: 0
