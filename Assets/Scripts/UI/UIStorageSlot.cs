@@ -14,11 +14,14 @@ public class UIStorageSlot : UIItemSlot
         if (ItemInSlot == null)
             return;
 
+        // Using the old input system here (May need to change later)
+        bool shouldTransferFullStack = Input.GetKey(KeyCode.LeftControl);
+
         if (slotType == E_StorageSlotType.StorageSlot)
-            _storage.FromStorageToPlayer(ItemInSlot);
+            _storage.FromStorageToPlayer(ItemInSlot, shouldTransferFullStack);
 
         else if (slotType == E_StorageSlotType.PlayerInventorySlot)
-            _storage.FromPlayerToStorage(ItemInSlot);
+            _storage.FromPlayerToStorage(ItemInSlot, shouldTransferFullStack);
 
         ui.ItemTooltip.ShowTooltip(false, null);
     }

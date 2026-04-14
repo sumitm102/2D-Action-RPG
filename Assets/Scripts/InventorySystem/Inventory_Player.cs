@@ -6,10 +6,13 @@ public class Inventory_Player : Inventory_Base
     private Player _player;
     public List<Inventory_EquipmentSlot> equipList;
 
+    public Inventory_Storage StorageInventory { get; private set; }
+
     protected override void Awake() {
         base.Awake();
 
         _player = GetComponent<Player>();
+        StorageInventory = FindFirstObjectByType<Inventory_Storage>();
     }
 
     public void TryEquipItem(Inventory_Item item) {
@@ -42,7 +45,7 @@ public class Inventory_Player : Inventory_Base
         // This is to make sure hp bar stays the same even when max health changes
         _player.Health.SetHPToPercent(savedHPPercent);
 
-        RemoveItem(itemToEquip);
+        RemoveOneItem(itemToEquip);
     }
 
     public void UnequipItem(Inventory_Item itemToUnequip, bool isReplacingItem = false) {
