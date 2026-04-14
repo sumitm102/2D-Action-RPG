@@ -24,7 +24,7 @@ public class Inventory_Base : MonoBehaviour
         if(consumable.currentStackSize > 1)
             consumable.RemoveStack();
         else
-            RemoveItem(consumable);
+            RemoveOneItem(consumable);
 
         OnInventoryChange?.Invoke();
     }
@@ -54,13 +54,19 @@ public class Inventory_Base : MonoBehaviour
             itemList.Add(itemToAdd);
 
 
-        OnInventoryChange?.Invoke();
+        TriggerUIUpdate();
     }
 
-    public void RemoveItem(Inventory_Item itemToRemove) {
-        itemList.Remove(itemToRemove);
+    public void RemoveOneItem(Inventory_Item itemToRemove) {
 
-        OnInventoryChange?.Invoke();
+        Inventory_Item itemInInventory = itemList.Find(item => item == itemToRemove);
+
+        if(itemInInventory.currentStackSize > 1)
+            itemInInventory.RemoveStack();
+        else
+            itemList.Remove(itemToRemove);
+
+        TriggerUIUpdate();
     }
 
     public Inventory_Item FindItemInList(SO_ItemData itemData) {

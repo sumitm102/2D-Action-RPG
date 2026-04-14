@@ -32,6 +32,12 @@ public class UI : MonoBehaviour
     }
 
 
+    public void SwitchOffAllTooltips() {
+        SkillTooltip.ShowTooltip(false, null);
+        ItemTooltip.ShowTooltip(false, null);
+        StatTooltip.ShowTooltip(false, null);
+    }
+
 
     public void ToggleSkillTreeUI() {
         _isSkillTreeUIEnabled = !_isSkillTreeUIEnabled;
