@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using UnityEngine;
 
 [Serializable]
@@ -49,4 +50,74 @@ public class Inventory_Item
     public bool CanAddStack() => currentStackSize < itemData.maxStackSize;
     public void AddStack() => currentStackSize++;
     public void RemoveStack() => currentStackSize--;
+
+
+    #region Previously in the UIItemTooltip Script
+    public string GetItemInfo() {
+        if (itemData.itemType == E_ItemType.Material)
+            return "Used for Crafting.";
+
+        if (itemData.itemType == E_ItemType.Consumable)
+            return itemData.itemEffect.effectDescription;
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine("");
+
+        foreach (var mod in Modifiers) {
+            string modType = GetStatNameByType(mod.statType);
+            string modValue = IsPercentageStat(mod.statType) ? mod.value.ToString() + "%" : mod.value.ToString();
+            sb.AppendLine("+ " + modValue + " " + modType);
+        }
+
+        if (itemEffect != null) {
+            sb.AppendLine("");
+            sb.AppendLine("Unique effect:");
+            sb.AppendLine(itemEffect.effectDescription);
+        }
+
+        return sb.ToString();
+    }
+
+    private string GetStatNameByType(E_StatType statType) {
+        switch (statType) {
+            case E_StatType.MaxHealth: return "Max Health";
+            case E_StatType.HealthRegen: return "Health Regeneration";
+            case E_StatType.Strength: return "Strength";
+            case E_StatType.Agility: return "Agility";
+            case E_StatType.Intelligence: return "Intelligence";
+            case E_StatType.Vitality: return "Vitality";
+            case E_StatType.AttackSpeed: return "Attack Speed";
+            case E_StatType.Damage: return "Damage";
+            case E_StatType.CritChance: return "Critical Chance";
+            case E_StatType.CritPower: return "Critical Power";
+            case E_StatType.ArmorReduction: return "Armor Reduction";
+            case E_StatType.FireDamage: return "Fire Damage";
+            case E_StatType.IceDamage: return "Ice Damage";
+            case E_StatType.LightningDamage: return "Lightning Damage";
+            case E_StatType.Armor: return "Armor";
+            case E_StatType.Evasion: return "Evasion";
+            case E_StatType.FireResistance: return "Fire Resistance";
+            case E_StatType.IceResistance: return "Ice Resistance";
+            case E_StatType.LightningResistance: return "Lightning Resistance";
+            default: return "Unknown Stat";
+        }
+    }
+
+    private bool IsPercentageStat(E_StatType statType) {
+        switch (statType) {
+            case E_StatType.CritChance:
+            case E_StatType.CritPower:
+            case E_StatType.ArmorReduction:
+            case E_StatType.FireResistance:
+            case E_StatType.IceResistance:
+            case E_StatType.LightningResistance:
+            case E_StatType.Evasion:
+            case E_StatType.AttackSpeed:
+                return true;
+            default:
+                return false;
+        }
+    }
+    #endregion
 }

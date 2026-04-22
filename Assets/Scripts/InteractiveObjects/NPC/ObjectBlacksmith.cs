@@ -14,14 +14,18 @@ public class ObjectBlacksmith : ObjectNPC, IInteractable {
         if(_anim != null )
             _anim.SetBool(_blacksmithHash, true);
 
-        _toggleStorageUI = false;
         _storage = GetComponent<Inventory_Storage>();
+        _toggleStorageUI = false;
     }
     public void Interact() {
-        ui.StorageUI.SetupStorage(_storage, _playerInventory);
+        ui.StorageUI.SetupStorageUI(_storage);
+        ui.CraftUI.SetupCraftUI(_storage);
 
         _toggleStorageUI = !_toggleStorageUI;
         ui.StorageUI.gameObject.SetActive(_toggleStorageUI);
+
+        if(ui.CraftUI.gameObject.activeInHierarchy)
+            ui.CraftUI.gameObject.SetActive(false);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision) {
@@ -35,6 +39,9 @@ public class ObjectBlacksmith : ObjectNPC, IInteractable {
         base.OnTriggerExit2D(collision);
 
         ui.SwitchOffAllTooltips();
+
+        ui.CraftUI.gameObject.SetActive(false);
         ui.StorageUI.gameObject.SetActive(false);
+        _toggleStorageUI = false;
     }
 }
