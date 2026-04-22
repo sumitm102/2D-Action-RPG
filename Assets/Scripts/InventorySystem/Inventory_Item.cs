@@ -12,10 +12,19 @@ public class Inventory_Item
     public ItemModifier[] Modifiers { get; private set; }
     public SO_ItemEffectData itemEffect;
 
+    public int PurchasingPrice {  get; private set; }
+    public float SellingPrice { get; private set; }
+
+    // Since selling price is usually lower than purchasing price
+    // This will be used to determine the selling price by being a multiplier to the purchasing price
+    private float _sellingPriceMul = 0.5f; 
+
     public Inventory_Item(SO_ItemData itemData) {
         this.itemData = itemData;
         Modifiers = EquipmentData()?.modifiers;
         itemEffect = itemData.itemEffect;
+        PurchasingPrice = itemData.itemPrice;
+        SellingPrice = itemData.itemPrice * _sellingPriceMul;
 
         _itemId = itemData.itemName + " - " + Guid.NewGuid().ToString();
     }

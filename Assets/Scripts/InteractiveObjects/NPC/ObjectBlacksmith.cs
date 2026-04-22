@@ -3,7 +3,6 @@ using UnityEngine;
 public class ObjectBlacksmith : ObjectNPC, IInteractable {
     private Animator _anim;
     private static readonly int _blacksmithHash = Animator.StringToHash("IsBlacksmith");
-    private bool _toggleStorageUI;
 
     private Inventory_Player _playerInventory;
     private Inventory_Storage _storage;
@@ -15,14 +14,13 @@ public class ObjectBlacksmith : ObjectNPC, IInteractable {
             _anim.SetBool(_blacksmithHash, true);
 
         _storage = GetComponent<Inventory_Storage>();
-        _toggleStorageUI = false;
     }
     public void Interact() {
         ui.StorageUI.SetupStorageUI(_storage);
         ui.CraftUI.SetupCraftUI(_storage);
 
-        _toggleStorageUI = !_toggleStorageUI;
-        ui.StorageUI.gameObject.SetActive(_toggleStorageUI);
+        ui.StorageUI.gameObject.SetActive(toggleUI);
+        toggleUI = !toggleUI;
 
         if(ui.CraftUI.gameObject.activeInHierarchy)
             ui.CraftUI.gameObject.SetActive(false);
@@ -42,6 +40,5 @@ public class ObjectBlacksmith : ObjectNPC, IInteractable {
 
         ui.CraftUI.gameObject.SetActive(false);
         ui.StorageUI.gameObject.SetActive(false);
-        _toggleStorageUI = false;
     }
 }
