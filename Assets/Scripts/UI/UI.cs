@@ -12,6 +12,7 @@ public class UI : MonoBehaviour
     public UIInventory InventoryUI { get; private set; }
     public UIStorage StorageUI { get; private set; }
     public UICraft CraftUI { get; private set; }
+    public UIMerchant MerchantUI { get; private set; }
     
     
     private bool _isSkillTreeUIEnabled;
@@ -27,6 +28,7 @@ public class UI : MonoBehaviour
         InventoryUI = GetComponentInChildren<UIInventory>(true);
         StorageUI = GetComponentInChildren<UIStorage>(true);
         CraftUI = GetComponentInChildren<UICraft>(true);
+        MerchantUI = GetComponentInChildren<UIMerchant>(true);
 
         // Sets it according to whether the object is active or not
         _isSkillTreeUIEnabled = SkillTreeUI.gameObject.activeSelf;

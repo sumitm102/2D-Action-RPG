@@ -8,6 +8,8 @@ public class Inventory_Player : Inventory_Base
 
     public Inventory_Storage StorageInventory { get; private set; }
 
+    [field: SerializeField] public int GoldCurrency { get; private set; } = 10000;
+
     protected override void Awake() {
         base.Awake();
 
@@ -78,4 +80,7 @@ public class Inventory_Player : Inventory_Base
 
 
     }
+
+    public void AddToCurrency(int priceToAdd) => GoldCurrency += priceToAdd;
+    public void SubtractFromCurrency(int priceToSubtract) => GoldCurrency -= priceToSubtract;
 }

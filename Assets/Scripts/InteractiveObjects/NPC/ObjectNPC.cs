@@ -16,13 +16,16 @@ public class ObjectNPC : MonoBehaviour
     [SerializeField] private float _floatingRange = 0.1f;
     private Vector3 _startingPosition;
 
+    protected bool toggleUI;
+
     protected virtual void Awake() {
-        ui = FindFirstObjectByType<UI>();
+        ui = FindFirstObjectByType<UI>(); 
     }
 
     protected virtual void Start() {
         _startingPosition = _interactTooltip.transform.position;
         _interactTooltip.SetActive(false);
+        toggleUI = true;
     }
 
     protected virtual void Update() {
@@ -39,6 +42,7 @@ public class ObjectNPC : MonoBehaviour
         player = null; // May have to remove later
 
         _interactTooltip.SetActive(false);
+        toggleUI = false;
     }
 
     private void HandleTooltipFloat() {
