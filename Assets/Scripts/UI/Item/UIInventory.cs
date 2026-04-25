@@ -3,58 +3,26 @@ using UnityEngine;
 
 public class UIInventory : MonoBehaviour
 {
-    private Inventory_Player playerInventory;
-    //private UIItemSlot[] _uiItemSlots;
-    private UIEquipmentSlot[] _uiEquipmentSlots;
+    private Inventory_Player _playerInventory;
 
     [SerializeField] private UIItemSlotParent _uiInventorySlotParent;
-    [SerializeField] private Transform _uiEquipmentSlotParent;
+    [SerializeField] private UIEquipSlotParent _equipSlotParent;
 
     private void Awake() {
-        //_uiItemSlots = _uiItemSlotParent.GetComponentsInChildren<UIItemSlot>();
-        _uiEquipmentSlots = _uiEquipmentSlotParent.GetComponentsInChildren<UIEquipmentSlot>();
 
-        playerInventory = FindFirstObjectByType<Inventory_Player>();
-        playerInventory.OnInventoryChange += UpdateUI;
+        _playerInventory = FindFirstObjectByType<Inventory_Player>();
+        _playerInventory.OnInventoryChange += UpdateUI;
 
         UpdateUI();
     }
 
     private void UpdateUI() {
-        //UpdateInventorySlots();
-        _uiInventorySlotParent.UpdateSlots(playerInventory.itemList);
-        UpdateEquipmentSlots();
+        _uiInventorySlotParent.UpdateSlots(_playerInventory.itemList);
+        _equipSlotParent.UpdateEquipmentSlots(_playerInventory.equipList);
     }
-
-    private void UpdateEquipmentSlots() {
-        List<Inventory_EquipmentSlot> playerEquipmentList = playerInventory.equipList;
-
-        for (int i = 0; i < _uiEquipmentSlots.Length; i++) {
-            var playerEquipmentSlot = playerEquipmentList[i];
-
-            if (!playerEquipmentSlot.HasItem()) 
-                _uiEquipmentSlots[i].UpdateSlot(null);
-            else
-                _uiEquipmentSlots[i].UpdateSlot(playerEquipmentSlot.equippedItem);
-        }
-    }
-
-    //private void UpdateInventorySlots() {
-    //    List<Inventory_Item> itemList = _inventoryFromPlayer.itemList;
-
-    //    for (int i = 0; i < _uiItemSlots.Length; i++) {
-
-    //        if (i < itemList.Count) 
-    //            _uiItemSlots[i].UpdateSlot(itemList[i]);
-            
-    //        else 
-    //            _uiItemSlots[i].UpdateSlot(null);
-            
-    //    }
-    //}
 
     // Not using on disable method here since it unsubsribes everytime player equips items when inventory ui is set off
     private void OnDestroy() {
-        playerInventory.OnInventoryChange -= UpdateUI;
+        _playerInventory.OnInventoryChange -= UpdateUI;
     }
 }

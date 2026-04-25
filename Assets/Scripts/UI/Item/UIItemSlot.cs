@@ -59,7 +59,7 @@ public class UIItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
             ui.ItemTooltip.ShowTooltip(false, null);
     }
 
-    public void OnPointerEnter(PointerEventData eventData) {
+    public virtual void OnPointerEnter(PointerEventData eventData) {
         if(ItemInSlot == null) 
             return;
 
