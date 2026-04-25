@@ -61,6 +61,11 @@ public class Inventory_Base : MonoBehaviour
 
         Inventory_Item itemInInventory = itemList.Find(item => item == itemToRemove);
 
+        if(itemInInventory == null) {
+            Debug.Log("Item to remove couldn't be found: " +  itemToRemove.itemData.itemName);
+            return;
+        }
+
         if(itemInInventory.currentStackSize > 1)
             itemInInventory.RemoveStack();
         else

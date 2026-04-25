@@ -63,13 +63,26 @@ public class Inventory_Item
 
     #region Previously in the UIItemTooltip Script
     public string GetItemInfo() {
-        if (itemData.itemType == E_ItemType.Material)
-            return "Used for Crafting.";
-
-        if (itemData.itemType == E_ItemType.Consumable)
-            return itemData.itemEffect.effectDescription;
-
         StringBuilder sb = new StringBuilder();
+
+
+        if (itemData.itemType == E_ItemType.Material) {
+            sb.AppendLine("");
+            sb.AppendLine("Used for crafting.");
+            sb.AppendLine("");
+            sb.AppendLine("");
+            return sb.ToString();
+        }
+
+        if (itemData.itemType == E_ItemType.Consumable) {
+
+            sb.AppendLine("");
+            sb.AppendLine(itemEffect.effectDescription);
+            sb.AppendLine("");
+            sb.AppendLine("");
+            return sb.ToString();
+        }
+
 
         sb.AppendLine("");
 
@@ -84,6 +97,9 @@ public class Inventory_Item
             sb.AppendLine("Unique effect:");
             sb.AppendLine(itemEffect.effectDescription);
         }
+
+        sb.AppendLine("");
+        sb.AppendLine("");
 
         return sb.ToString();
     }

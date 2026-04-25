@@ -940,6 +940,7 @@ MonoBehaviour:
       itemData: {fileID: 0}
       currentStackSize: 0
       itemEffect: {fileID: 0}
+  <GoldCurrency>k__BackingField: 10000
 --- !u!114 &7110349619583400578
 MonoBehaviour:
   m_ObjectHideFlags: 0
