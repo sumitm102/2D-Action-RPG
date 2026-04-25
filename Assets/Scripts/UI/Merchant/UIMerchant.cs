@@ -13,7 +13,8 @@ public class UIMerchant : MonoBehaviour
         _merchantInventory = merchantInventory;
         _playerInventory = playerInventory;
 
-        this._playerInventory.OnInventoryChange += UpdateSlotUI;
+        _playerInventory.OnInventoryChange += UpdateSlotUI;
+        _merchantInventory.OnInventoryChange += UpdateSlotUI;
         UpdateSlotUI();
 
 
@@ -26,12 +27,13 @@ public class UIMerchant : MonoBehaviour
         if(_playerInventory ==  null)
             return;
 
-        _playerInventorySlots.UpdateSlots(_playerInventory.itemList);
         _merchantInventorySlots.UpdateSlots(_merchantInventory.itemList);
+        _playerInventorySlots.UpdateSlots(_playerInventory.itemList);
         _equipSlots.UpdateEquipmentSlots(_playerInventory.equipList);
     }
 
     private void OnDisable() {
         _merchantInventory.OnInventoryChange -= UpdateSlotUI;
+        _playerInventory.OnInventoryChange -= UpdateSlotUI;
     }
 }
