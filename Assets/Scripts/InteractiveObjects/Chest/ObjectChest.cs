@@ -7,14 +7,17 @@ public class ObjectChest : MonoBehaviour, IDamagable
     private Animator _anim;
     private Rigidbody2D _rb;
     private EntityVFX _entityVFX;
+    private EntityDropManager _entityDropManager;
 
     [field: Header("Open Details")]
     [field: SerializeField] public Vector2 KnockbackVelocity { get; private set; }
+    [SerializeField] private bool _canDrop = true;
 
     private void Awake() {
         _anim = GetComponentInChildren<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _entityVFX = GetComponent<EntityVFX>();
+        _entityDropManager = GetComponent<EntityDropManager>();
     }
 
     public bool TakeDamage(float damage, float elementalDamage, E_ElementType element, Transform damageDealer) {
@@ -30,7 +33,10 @@ public class ObjectChest : MonoBehaviour, IDamagable
         if (_entityVFX != null)
             _entityVFX.PlayOnDamageVFX();
 
-        // Drop items
+        if(_canDrop && _entityDropManager != null) {
+            _canDrop = false;
+            _entityDropManager.DropItems();
+        }
 
         return true;
     }

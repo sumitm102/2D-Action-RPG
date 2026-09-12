@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6911934738092558428}
   - component: {fileID: 1109311719867945803}
   - component: {fileID: 88630240539732648}
+  - component: {fileID: 4375737788310776539}
   m_Layer: 7
   m_Name: ObjectChest
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <KnockbackVelocity>k__BackingField: {x: 0, y: 5}
+  _canDrop: 1
 --- !u!114 &88630240539732648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3596b0625ca42a9478da16f9ef43de91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sr: {fileID: 0}
+  sr: {fileID: 0}
   _onDamageVFXMat: {fileID: 2100000, guid: 7805b6acfd0049d4fa548b21a7df8a64, type: 2}
   _onDamageVFXDuration: 0.2
   _hitVFXColor: {r: 1, g: 1, b: 1, a: 1}
@@ -143,6 +145,22 @@ MonoBehaviour:
   _chillVFXColor: {r: 0, g: 1, b: 1, a: 1}
   _burnVFXColor: {r: 1, g: 0, b: 0, a: 1}
   _electrifyVFXColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &4375737788310776539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3048276163959763455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a6f003a8dcba44bbcf652659127f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDropPrefab: {fileID: 6799015983502594127, guid: 35c9da4effdf03242bab9ba1a1f8eb2c, type: 3}
+  _dropListData: {fileID: 11400000, guid: b757e26a524c79947906be5805640151, type: 2}
+  _maxRarityAmount: 1600
+  _maxItemsToDrop: 3
 --- !u!1 &6120816200587719289
 GameObject:
   m_ObjectHideFlags: 0
