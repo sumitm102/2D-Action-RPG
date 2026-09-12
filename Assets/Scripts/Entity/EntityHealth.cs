@@ -8,6 +8,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
     private Entity _entity;
     private EntityVFX _entityVFX;
     private EntityStats _entityStats;
+    private EntityDropManager _entityDropManager;   
 
     [SerializeField] protected float currentHealth;
 
@@ -57,6 +58,9 @@ public class EntityHealth : MonoBehaviour, IDamagable
             UpdateHealthBar();
             InvokeRepeating(nameof(RegenerateHealth), 0, _regenInterval);
         }
+
+        if(_entityDropManager != null)
+            _entityDropManager = GetComponent<EntityDropManager>();
     }
 
     public virtual bool TakeDamage(float physicalDamage, float elementalDamage, E_ElementType elementType, Transform damageDealer) {
@@ -164,6 +168,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
     protected virtual void Die() {
         IsDead = true;
         _entity?.TryEnterDeadState();
+        _entityDropManager?.DropItems();
     }
 
     private void UpdateHealthBar() {
